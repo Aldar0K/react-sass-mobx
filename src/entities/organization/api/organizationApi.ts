@@ -1,10 +1,10 @@
 import { apiClient } from '@/shared/api/client';
-import type { 
-  IOrganization, 
-  IUpdateOrganizationRequest, 
-  IUploadPhotoResponse 
-} from '../model/types';
 import { ORGANIZATION_ENDPOINTS } from '../config/constants';
+import type {
+    IOrganization,
+    IUpdateOrganizationRequest,
+    IUploadPhotoResponse
+} from '../model/types';
 
 export const organizationApi = {
   async getOrganization(id: string): Promise<IOrganization> {

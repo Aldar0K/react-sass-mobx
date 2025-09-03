@@ -1,4 +1,4 @@
-import type { IOrganization, IContract } from '../model/types';
+import type { IContract, IOrganization } from '../model/types';
 
 // Утилиты для работы с организацией
 export const formatContractDate = (dateString: string): string => {

@@ -1,6 +1,6 @@
 import { apiClient } from '@/shared/api/client';
-import type { IContact, IUpdateContactRequest } from '../model/types';
 import { CONTACT_ENDPOINTS } from '../config/constants';
+import type { IContact, IUpdateContactRequest } from '../model/types';
 
 export const contactApi = {
   async getContact(id: string): Promise<IContact> {

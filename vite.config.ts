@@ -21,7 +21,8 @@ export default defineConfig({
     },
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "./src/shared/styles/_variables.scss" as *; @use "./src/shared/styles/_mixins.scss" as *;`,
+        additionalData: `@import "${path.resolve(__dirname, 'src/shared/styles/_variables.scss')}"; @import "${path.resolve(__dirname, 'src/shared/styles/_mixins.scss')}";`,
+        silenceDeprecations: ['import'],
       },
     },
   },

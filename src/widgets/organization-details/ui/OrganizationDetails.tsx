@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { observer } from 'mobx-react-lite';
-import { Button, EditIcon } from '@/shared/ui';
-import { EditOrganizationForm } from '@/features/edit-organization';
 import type { IOrganization } from '@/entities/organization';
+import { EditOrganizationForm } from '@/features/edit-organization';
+import { Button, EditIcon } from '@/shared/ui';
+import { observer } from 'mobx-react-lite';
+import React, { useState } from 'react';
 // import styles from './OrganizationDetails.module.scss';
 
 interface OrganizationDetailsProps {

@@ -1,26 +1,21 @@
 // Публичный API сущности Contact
-export { ContactStore } from './model/contact.store';
 export { contactApi } from './api/contactApi';
+export { ContactStore } from './model/contact.store';
 
 // Типы
 export type {
-  IContact,
-  IUpdateContactRequest,
+    IContact,
+    IUpdateContactRequest
 } from './model/types';
 
 // Константы
 export {
-  CONTACT_ENDPOINTS,
-  CONTACT_VALIDATION,
+    CONTACT_ENDPOINTS,
+    CONTACT_VALIDATION
 } from './config/constants';
 
 // Утилиты
 export {
-  getFullName,
-  formatPhone,
-  getInitials,
-  validateEmail,
-  validatePhone,
-  validateName,
-  normalizePhone,
+    formatPhone, getFullName, getInitials, normalizePhone, validateEmail, validateName, validatePhone
 } from './lib/utils';
+

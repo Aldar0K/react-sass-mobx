@@ -1,5 +1,5 @@
-import type { IContact } from '../model/types';
 import { CONTACT_VALIDATION } from '../config/constants';
+import type { IContact } from '../model/types';
 
 // Утилиты для работы с контактами
 export const getFullName = (contact: IContact): string => {

@@ -1,9 +1,9 @@
 import { makeAutoObservable, runInAction } from 'mobx';
 import { organizationApi } from '../api/organizationApi';
-import type { 
-  IOrganization, 
-  IUpdateOrganizationRequest, 
-  IUploadPhotoResponse 
+import type {
+    IOrganization,
+    IUpdateOrganizationRequest,
+    IUploadPhotoResponse
 } from './types';
 
 export class OrganizationStore {

@@ -1,7 +1,7 @@
-import React from 'react';
-import { observer } from 'mobx-react-lite';
 import { OrganizationPage } from '@/pages/organization/ui/OrganizationPage';
 import '@/shared/styles/global.scss';
+import { observer } from 'mobx-react-lite';
+import React from 'react';
 import styles from './styles/App.module.scss';
 
 const App: React.FC = observer(() => {

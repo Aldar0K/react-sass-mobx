@@ -1,3 +1,5 @@
+// Переменные и миксины подключаются автоматически через vite.config.ts
+
 // Sidebar точно по дизайну Figma
 .sidebar {
   @include flex-column;

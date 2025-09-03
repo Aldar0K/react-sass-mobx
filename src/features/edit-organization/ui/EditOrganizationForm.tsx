@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { observer } from 'mobx-react-lite';
-import { Button, Input, Select, CheckIcon, CloseIcon } from '@/shared/ui';
 import type { IOrganization, IUpdateOrganizationRequest } from '@/entities/organization';
 import { BUSINESS_ENTITY_OPTIONS, COMPANY_TYPE_OPTIONS } from '@/entities/organization';
+import { Button, CheckIcon, CloseIcon, Input, Select } from '@/shared/ui';
+import { observer } from 'mobx-react-lite';
+import React, { useState } from 'react';
 
 interface EditOrganizationFormProps {
   organization: IOrganization;

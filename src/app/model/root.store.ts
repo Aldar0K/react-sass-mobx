@@ -1,7 +1,7 @@
-import { makeAutoObservable, runInAction } from 'mobx';
-import { OrganizationStore } from '@/entities/organization';
 import { ContactStore } from '@/entities/contact';
+import { OrganizationStore } from '@/entities/organization';
 import { authApi } from '@/shared/api';
+import { makeAutoObservable, runInAction } from 'mobx';
 
 export class RootStore {
   organizationStore: OrganizationStore;
