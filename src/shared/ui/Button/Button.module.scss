@@ -1,0 +1,61 @@
+// Кнопки точно по дизайну Figma
+.button {
+  @include button-base;
+
+  @include element('icon') {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    z-index: 2;
+    position: relative;
+
+    @include modifier('left') {
+      order: -1;
+    }
+
+    @include modifier('right') {
+      order: 1;
+    }
+  }
+
+  @include element('text') {
+    z-index: 2;
+    position: relative;
+    @include text-button;
+  }
+
+  // Варианты кнопок
+  @include modifier('filled') {
+    @include button-filled;
+  }
+
+  @include modifier('outline') {
+    @include button-outline;
+  }
+
+  // Размеры кнопок
+  @include modifier('normal') {
+    @include button-normal;
+  }
+
+  @include modifier('mini') {
+    @include button-mini;
+  }
+}
+
+// Специфичные стили для иконочных кнопок
+.button--mini {
+  .button__icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.button--normal {
+  .button__icon {
+    width: 20px;
+    height: 20px;
+  }
+}

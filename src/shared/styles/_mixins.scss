@@ -1,0 +1,217 @@
+// БЭМ миксины
+@mixin element($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+@mixin modifier($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+
+// Лейаут миксины
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Кнопки точно по дизайну Figma
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-lg;
+  border: none;
+  border-radius: $border-radius-md;
+  font-family: $font-family;
+  font-weight: $font-weight-semibold;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &:focus {
+    outline: none;
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+@mixin button-filled {
+  @include button-base;
+  background-color: $color-primary;
+  color: $color-text-white;
+  box-shadow: $shadow-button;
+  
+  &:hover:not(:disabled) {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $color-button-hover;
+      border-radius: inherit;
+      z-index: 1;
+    }
+  }
+  
+  &:active:not(:disabled) {
+    &::before {
+      background-color: $color-button-active;
+    }
+  }
+}
+
+@mixin button-outline {
+  @include button-base;
+  background-color: transparent;
+  color: $color-primary;
+  border: 1px solid $color-border-default;
+  
+  &:hover:not(:disabled) {
+    border-color: $color-border-hover;
+    color: $color-secondary;
+  }
+  
+  &:active:not(:disabled) {
+    border-color: $color-secondary;
+    color: $color-secondary;
+  }
+}
+
+// Размеры кнопок из дизайна
+@mixin button-normal {
+  padding: 10px $spacing-lg;
+  height: 40px;
+  font-size: $font-size-sm;
+  line-height: $line-height-normal;
+  letter-spacing: 3.69%;
+}
+
+@mixin button-mini {
+  padding: 4px $spacing-lg 4px $spacing-md;
+  height: 28px;
+  font-size: $font-size-xs;
+  line-height: $line-height-loose;
+  letter-spacing: 4.36%;
+}
+
+// Инпуты точно по дизайну
+@mixin input-base {
+  display: flex;
+  align-items: center;
+  padding: 10px $spacing-lg;
+  background-color: $color-white;
+  border: 1px solid $color-border-default;
+  border-radius: $border-radius-md;
+  font-family: $font-family;
+  font-size: $font-size-md;
+  line-height: $line-height-loose;
+  color: $color-text-primary;
+  transition: border-color 0.2s ease;
+  height: 40px;
+  
+  &:hover {
+    border-color: $color-border-hover;
+  }
+  
+  &:focus, &:focus-within {
+    outline: none;
+    border-color: $color-border-focus;
+    border-width: 2px;
+  }
+  
+  &::placeholder {
+    color: $color-text-secondary;
+  }
+}
+
+// Карточки
+@mixin card {
+  background-color: $color-white;
+  border-radius: $border-radius-xl;
+  box-shadow: $shadow-button;
+  padding: $spacing-3xl;
+}
+
+// Типографика точно по дизайну
+@mixin text-heading-main {
+  font-family: $font-family;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-xl;
+  line-height: $line-height-tight;
+  letter-spacing: 0.89%;
+  color: $color-text-primary;
+}
+
+@mixin text-heading-section {
+  font-family: $font-family;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-md;
+  line-height: $line-height-loose;
+  letter-spacing: 2.14%;
+  color: $color-text-primary;
+}
+
+@mixin text-body {
+  font-family: $font-family;
+  font-weight: $font-weight-normal;
+  font-size: $font-size-md;
+  line-height: $line-height-loose;
+  letter-spacing: 2.14%;
+  color: $color-text-primary;
+}
+
+@mixin text-label {
+  font-family: $font-family;
+  font-weight: $font-weight-normal;
+  font-size: $font-size-sm;
+  line-height: $line-height-normal;
+  letter-spacing: 1.92%;
+  color: $color-text-secondary;
+}
+
+@mixin text-button {
+  font-family: $font-family;
+  font-weight: $font-weight-semibold;
+  text-align: center;
+}
+
+// Адаптивность
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 769px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1025px) {
+    @content;
+  }
+}

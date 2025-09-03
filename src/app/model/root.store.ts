@@ -1,0 +1,62 @@
+import { makeAutoObservable, runInAction } from 'mobx';
+import { OrganizationStore } from '@/entities/organization';
+import { ContactStore } from '@/entities/contact';
+import { authApi } from '@/shared/api';
+
+export class RootStore {
+  organizationStore: OrganizationStore;
+  contactStore: ContactStore;
+  
+  isAuthenticated = false;
+  authToken: string | null = null;
+  isAuthLoading = false;
+  authError: string | null = null;
+
+  constructor() {
+    makeAutoObservable(this);
+    this.organizationStore = new OrganizationStore();
+    this.contactStore = new ContactStore();
+  }
+
+  async authenticate(username: string): Promise<void> {
+    this.setAuthLoading(true);
+    this.setAuthError(null);
+
+    try {
+      const token = await authApi.getToken(username);
+      runInAction(() => {
+        this.authToken = token;
+        this.isAuthenticated = true;
+      });
+    } catch (error) {
+      runInAction(() => {
+        this.setAuthError(error instanceof Error ? error.message : 'Authentication failed');
+      });
+      throw error;
+    } finally {
+      runInAction(() => {
+        this.setAuthLoading(false);
+      });
+    }
+  }
+
+  logout(): void {
+    this.isAuthenticated = false;
+    this.authToken = null;
+    this.authError = null;
+  }
+
+  private setAuthLoading(loading: boolean): void {
+    this.isAuthLoading = loading;
+  }
+
+  private setAuthError(error: string | null): void {
+    this.authError = error;
+  }
+
+  clearAuthError(): void {
+    this.authError = null;
+  }
+}
+
+export const rootStore = new RootStore();
