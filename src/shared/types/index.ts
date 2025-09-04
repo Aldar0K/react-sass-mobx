@@ -1,2 +1,2 @@
 // Экспорт только общих типов (специфичные типы перенесены в entities)
-export * from './auth';
+export * from "./auth";

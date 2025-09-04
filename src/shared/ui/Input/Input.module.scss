@@ -5,12 +5,12 @@
   @include flex-column;
   width: 100%;
 
-  @include element('container') {
+  @include element("container") {
     @include input-base;
     position: relative;
   }
 
-  @include element('field') {
+  @include element("field") {
     flex: 1;
     width: 100%;
     border: none;
@@ -25,7 +25,7 @@
     }
   }
 
-  @include element('icon') {
+  @include element("icon") {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,19 +35,19 @@
     opacity: 0.8;
   }
 
-  @include element('error') {
+  @include element("error") {
     @include text-label;
     color: $color-danger;
     margin-top: $spacing-sm;
   }
 
-  @include modifier('error') {
+  @include modifier("error") {
     .input__container {
       border-color: $color-danger;
     }
   }
 
-  @include modifier('with-icon') {
+  @include modifier("with-icon") {
     .input__container {
       padding-right: $spacing-5xl;
     }

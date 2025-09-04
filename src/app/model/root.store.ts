@@ -1,12 +1,14 @@
-import { ContactStore } from '@/entities/contact';
-import { OrganizationStore } from '@/entities/organization';
-import { authApi } from '@/shared/api';
-import { makeAutoObservable, runInAction } from 'mobx';
+import { ContactStore } from "@/entities/contact";
+import { OrganizationStore } from "@/entities/organization";
+import { NavigationStore } from "@/features/navigation";
+import { authApi } from "@/shared/api";
+import { makeAutoObservable, runInAction } from "mobx";
 
 export class RootStore {
   organizationStore: OrganizationStore;
   contactStore: ContactStore;
-  
+  navigationStore: NavigationStore;
+
   isAuthenticated = false;
   authToken: string | null = null;
   isAuthLoading = false;
@@ -16,6 +18,7 @@ export class RootStore {
     makeAutoObservable(this);
     this.organizationStore = new OrganizationStore();
     this.contactStore = new ContactStore();
+    this.navigationStore = new NavigationStore();
   }
 
   async authenticate(username: string): Promise<void> {
@@ -30,7 +33,9 @@ export class RootStore {
       });
     } catch (error) {
       runInAction(() => {
-        this.setAuthError(error instanceof Error ? error.message : 'Authentication failed');
+        this.setAuthError(
+          error instanceof Error ? error.message : "Authentication failed",
+        );
       });
       throw error;
     } finally {

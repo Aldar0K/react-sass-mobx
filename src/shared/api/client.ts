@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://test-task-api.allfuneral.com';
+const API_BASE_URL = "https://test-task-api.allfuneral.com";
 
 class ApiClient {
   private baseUrl: string;
@@ -14,7 +14,7 @@ class ApiClient {
 
   private getHeaders(): Record<string, string> {
     const headers: Record<string, string> = {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     };
 
     if (this.token) {
@@ -24,10 +24,7 @@ class ApiClient {
     return headers;
   }
 
-  async request<T>(
-    endpoint: string,
-    options: RequestInit = {}
-  ): Promise<T> {
+  async request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
     const url = `${this.baseUrl}${endpoint}`;
     const config: RequestInit = {
       ...options,
@@ -47,16 +44,13 @@ class ApiClient {
     return data;
   }
 
-  async uploadFile<T>(
-    endpoint: string,
-    file: File
-  ): Promise<T> {
+  async uploadFile<T>(endpoint: string, file: File): Promise<T> {
     const url = `${this.baseUrl}${endpoint}`;
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append("file", file);
 
     const config: RequestInit = {
-      method: 'POST',
+      method: "POST",
       headers: {
         ...(this.token && { Authorization: `Bearer ${this.token}` }),
       },
@@ -66,7 +60,9 @@ class ApiClient {
     const response = await fetch(url, config);
 
     if (!response.ok) {
-      throw new Error(`Upload Error: ${response.status} ${response.statusText}`);
+      throw new Error(
+        `Upload Error: ${response.status} ${response.statusText}`,
+      );
     }
 
     const data = await response.json();

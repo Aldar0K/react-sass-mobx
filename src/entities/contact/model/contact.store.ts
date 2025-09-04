@@ -1,6 +1,6 @@
-import { makeAutoObservable, runInAction } from 'mobx';
-import { contactApi } from '../api/contactApi';
-import type { IContact, IUpdateContactRequest } from './types';
+import { makeAutoObservable, runInAction } from "mobx";
+import { contactApi } from "../api/contactApi";
+import type { IContact, IUpdateContactRequest } from "./types";
 
 export class ContactStore {
   contact: IContact | null = null;
@@ -22,7 +22,9 @@ export class ContactStore {
       });
     } catch (error) {
       runInAction(() => {
-        this.setError(error instanceof Error ? error.message : 'Failed to load contact');
+        this.setError(
+          error instanceof Error ? error.message : "Failed to load contact",
+        );
       });
     } finally {
       runInAction(() => {
@@ -31,10 +33,7 @@ export class ContactStore {
     }
   }
 
-  async updateContact(
-    id: string, 
-    data: IUpdateContactRequest
-  ): Promise<void> {
+  async updateContact(id: string, data: IUpdateContactRequest): Promise<void> {
     this.setLoading(true);
     this.setError(null);
 
@@ -45,7 +44,9 @@ export class ContactStore {
       });
     } catch (error) {
       runInAction(() => {
-        this.setError(error instanceof Error ? error.message : 'Failed to update contact');
+        this.setError(
+          error instanceof Error ? error.message : "Failed to update contact",
+        );
       });
       throw error;
     } finally {

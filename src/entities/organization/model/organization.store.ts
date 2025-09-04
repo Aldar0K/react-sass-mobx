@@ -1,10 +1,10 @@
-import { makeAutoObservable, runInAction } from 'mobx';
-import { organizationApi } from '../api/organizationApi';
+import { makeAutoObservable, runInAction } from "mobx";
+import { organizationApi } from "../api/organizationApi";
 import type {
-    IOrganization,
-    IUpdateOrganizationRequest,
-    IUploadPhotoResponse
-} from './types';
+  IOrganization,
+  IUpdateOrganizationRequest,
+  IUploadPhotoResponse,
+} from "./types";
 
 export class OrganizationStore {
   organization: IOrganization | null = null;
@@ -26,7 +26,11 @@ export class OrganizationStore {
       });
     } catch (error) {
       runInAction(() => {
-        this.setError(error instanceof Error ? error.message : 'Failed to load organization');
+        this.setError(
+          error instanceof Error
+            ? error.message
+            : "Failed to load organization",
+        );
       });
     } finally {
       runInAction(() => {
@@ -36,20 +40,27 @@ export class OrganizationStore {
   }
 
   async updateOrganization(
-    id: string, 
-    data: IUpdateOrganizationRequest
+    id: string,
+    data: IUpdateOrganizationRequest,
   ): Promise<void> {
     this.setLoading(true);
     this.setError(null);
 
     try {
-      const updatedOrganization = await organizationApi.updateOrganization(id, data);
+      const updatedOrganization = await organizationApi.updateOrganization(
+        id,
+        data,
+      );
       runInAction(() => {
         this.organization = updatedOrganization;
       });
     } catch (error) {
       runInAction(() => {
-        this.setError(error instanceof Error ? error.message : 'Failed to update organization');
+        this.setError(
+          error instanceof Error
+            ? error.message
+            : "Failed to update organization",
+        );
       });
       throw error;
     } finally {
@@ -70,7 +81,11 @@ export class OrganizationStore {
       });
     } catch (error) {
       runInAction(() => {
-        this.setError(error instanceof Error ? error.message : 'Failed to delete organization');
+        this.setError(
+          error instanceof Error
+            ? error.message
+            : "Failed to delete organization",
+        );
       });
       throw error;
     } finally {
@@ -85,7 +100,10 @@ export class OrganizationStore {
     this.setError(null);
 
     try {
-      const newPhoto: IUploadPhotoResponse = await organizationApi.uploadImage(id, file);
+      const newPhoto: IUploadPhotoResponse = await organizationApi.uploadImage(
+        id,
+        file,
+      );
       runInAction(() => {
         if (this.organization) {
           this.organization.photos = [...this.organization.photos, newPhoto];
@@ -93,7 +111,9 @@ export class OrganizationStore {
       });
     } catch (error) {
       runInAction(() => {
-        this.setError(error instanceof Error ? error.message : 'Failed to upload photo');
+        this.setError(
+          error instanceof Error ? error.message : "Failed to upload photo",
+        );
       });
       throw error;
     } finally {
@@ -112,13 +132,15 @@ export class OrganizationStore {
       runInAction(() => {
         if (this.organization) {
           this.organization.photos = this.organization.photos.filter(
-            photo => photo.name !== imageName
+            (photo) => photo.name !== imageName,
           );
         }
       });
     } catch (error) {
       runInAction(() => {
-        this.setError(error instanceof Error ? error.message : 'Failed to delete photo');
+        this.setError(
+          error instanceof Error ? error.message : "Failed to delete photo",
+        );
       });
       throw error;
     } finally {

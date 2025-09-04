@@ -1,10 +1,7 @@
-// Переменные и миксины подключаются автоматически через vite.config.ts
-
-// Кнопки точно по дизайну Figma
 .button {
   @include button-base;
 
-  @include element('icon') {
+  @include element("icon") {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,36 +10,36 @@
     z-index: 2;
     position: relative;
 
-    @include modifier('left') {
+    @include modifier("left") {
       order: -1;
     }
 
-    @include modifier('right') {
+    @include modifier("right") {
       order: 1;
     }
   }
 
-  @include element('text') {
+  @include element("text") {
     z-index: 2;
     position: relative;
     @include text-button;
   }
 
   // Варианты кнопок
-  @include modifier('filled') {
+  @include modifier("filled") {
     @include button-filled;
   }
 
-  @include modifier('outline') {
+  @include modifier("outline") {
     @include button-outline;
   }
 
   // Размеры кнопок
-  @include modifier('normal') {
+  @include modifier("normal") {
     @include button-normal;
   }
 
-  @include modifier('mini') {
+  @include modifier("mini") {
     @include button-mini;
   }
 }

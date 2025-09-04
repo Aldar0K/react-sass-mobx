@@ -5,7 +5,7 @@
   position: relative;
   width: 100%;
 
-  @include element('trigger') {
+  @include element("trigger") {
     @include input-base;
     cursor: pointer;
     user-select: none;
@@ -13,7 +13,7 @@
     padding-right: $spacing-6xl;
   }
 
-  @include element('text') {
+  @include element("text") {
     flex: 1;
     text-align: left;
     white-space: nowrap;
@@ -21,7 +21,7 @@
     text-overflow: ellipsis;
   }
 
-  @include element('icon') {
+  @include element("icon") {
     position: absolute;
     right: $spacing-lg;
     display: flex;
@@ -31,7 +31,7 @@
     transition: transform 0.2s ease;
   }
 
-  @include element('dropdown') {
+  @include element("dropdown") {
     position: absolute;
     top: 100%;
     left: 0;
@@ -46,7 +46,7 @@
     padding: $spacing-md 0 0;
   }
 
-  @include element('option') {
+  @include element("option") {
     padding: $spacing-lg $spacing-xl;
     cursor: pointer;
     @include text-body;
@@ -56,14 +56,14 @@
       background-color: rgba(0, 0, 0, 0.05);
     }
 
-    @include modifier('selected') {
+    @include modifier("selected") {
       background-color: rgba(0, 0, 0, 0.05);
       color: $color-secondary;
       font-weight: $font-weight-medium;
     }
   }
 
-  @include modifier('open') {
+  @include modifier("open") {
     .select__icon {
       transform: rotate(180deg);
     }
@@ -74,7 +74,7 @@
     }
   }
 
-  @include modifier('disabled') {
+  @include modifier("disabled") {
     .select__trigger {
       cursor: not-allowed;
       opacity: 0.5;

@@ -12,15 +12,15 @@ export interface IUploadPhotoResponse {
 
 // API endpoints из документации
 export const API_ENDPOINTS = {
-  AUTH: '/auth',
-  COMPANIES: '/companies',
-  CONTACTS: '/contacts',
+  AUTH: "/auth",
+  COMPANIES: "/companies",
+  CONTACTS: "/contacts",
 } as const;
 
 // HTTP методы
 export const HTTP_METHODS = {
-  GET: 'GET',
-  POST: 'POST',
-  PATCH: 'PATCH',
-  DELETE: 'DELETE',
+  GET: "GET",
+  POST: "POST",
+  PATCH: "PATCH",
+  DELETE: "DELETE",
 } as const;

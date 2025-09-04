@@ -1,11 +1,19 @@
-import { rootStore } from '@/app/model/root.store';
-import type { IUpdateOrganizationRequest } from '@/entities/organization';
-import { ArrowLeftIcon, Button, EditIcon, Modal, TrashIcon } from '@/shared/ui';
-import { OrganizationDetails } from '@/widgets/organization-details/ui/OrganizationDetails';
-import { Sidebar } from '@/widgets/sidebar/ui/Sidebar';
-import { observer } from 'mobx-react-lite';
-import React, { useEffect, useState } from 'react';
-import styles from './OrganizationPage.module.scss';
+import { rootStore } from "@/app/model/root.store";
+import type { IUpdateOrganizationRequest } from "@/entities/organization";
+import {
+  ArrowLeftIcon,
+  Button,
+  ButtonFilled,
+  EditIcon,
+  Modal,
+  TrashIcon,
+} from "@/shared/ui";
+import { MainMenu } from "@/widgets/main-menu";
+import { OrganizationDetails } from "@/widgets/organization-details/ui/OrganizationDetails";
+import { Sidebar } from "@/widgets/sidebar/ui/Sidebar";
+import { observer } from "mobx-react-lite";
+import React, { useEffect, useState } from "react";
+import styles from "./OrganizationPage.module.scss";
 
 export const OrganizationPage: React.FC = observer(() => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -15,28 +23,37 @@ export const OrganizationPage: React.FC = observer(() => {
     // Initialize with demo data
     const initializeData = async (): Promise<void> => {
       try {
-        await rootStore.authenticate('testuser'); // You'll need to provide the actual username
-        await organizationStore.loadOrganization('12');
+        await rootStore.authenticate("testuser"); // You'll need to provide the actual username
+        await organizationStore.loadOrganization("12");
         if (organizationStore.organization?.contactId) {
-          await contactStore.loadContact(organizationStore.organization.contactId);
+          await contactStore.loadContact(
+            organizationStore.organization.contactId,
+          );
         }
       } catch (error) {
-        console.error('Failed to initialize data:', error);
+        console.error("Failed to initialize data:", error);
       }
     };
 
     initializeData();
   }, []);
 
-  const handleUpdateOrganization = async (data: IUpdateOrganizationRequest): Promise<void> => {
+  const handleUpdateOrganization = async (
+    data: IUpdateOrganizationRequest,
+  ): Promise<void> => {
     if (organizationStore.organization) {
-      await organizationStore.updateOrganization(organizationStore.organization.id, data);
+      await organizationStore.updateOrganization(
+        organizationStore.organization.id,
+        data,
+      );
     }
   };
 
   const handleDeleteOrganization = async (): Promise<void> => {
     if (organizationStore.organization) {
-      await organizationStore.deleteOrganization(organizationStore.organization.id);
+      await organizationStore.deleteOrganization(
+        organizationStore.organization.id,
+      );
       setShowDeleteModal(false);
     }
   };
@@ -51,10 +68,13 @@ export const OrganizationPage: React.FC = observer(() => {
   if (!organizationStore.organization) {
     return (
       <div className={styles.organizationPage}>
+        <MainMenu />
         <Sidebar />
-        <div className={styles.organizationPage__content}>
-          <div className={styles.organizationPage__loading}>
-            {organizationStore.isLoading ? 'Loading...' : 'No organization found'}
+        <div className={styles.organizationPageContent}>
+          <div className={styles.organizationPageLoading}>
+            {organizationStore.isLoading
+              ? "Loading..."
+              : "No organization found"}
           </div>
         </div>
       </div>
@@ -63,38 +83,39 @@ export const OrganizationPage: React.FC = observer(() => {
 
   return (
     <div className={styles.organizationPage}>
+      <MainMenu />
       <Sidebar />
-      
-      <div className={styles.organizationPage__content}>
-        <div className={styles.organizationPage__header}>
-          <Button
-            variant="outline"
-            size="mini"
-            icon={<ArrowLeftIcon size={20} />}
-            className={styles.organizationPage__backButton}
+
+      <div className={styles.organizationPageContent}>
+        <div className={styles.organizationPageHeader}>
+          <ButtonFilled
+            icon={ArrowLeftIcon}
+            size="normal"
+            className={styles.organizationPageBackButton}
+            aria-label="Go back"
           />
-          
-          <div className={styles.organizationPage__titleSection}>
-            <h1 className={styles.organizationPage__title}>
+
+          <div className={styles.organizationPageTitleSection}>
+            <h1 className={styles.organizationPageTitle}>
               {organizationStore.organization.name}
             </h1>
-            <div className={styles.organizationPage__actions}>
-              <Button
-                variant="outline"
-                size="mini"
-                icon={<EditIcon size={20} />}
+            <div className={styles.organizationPageActions}>
+              <ButtonFilled
+                icon={EditIcon}
+                size="normal"
+                aria-label="Edit organization"
               />
-              <Button
-                variant="outline"
-                size="mini"
-                icon={<TrashIcon size={20} />}
+              <ButtonFilled
+                icon={TrashIcon}
+                size="normal"
                 onClick={() => setShowDeleteModal(true)}
+                aria-label="Delete organization"
               />
             </div>
           </div>
         </div>
 
-        <div className={styles.organizationPage__blocks}>
+        <div className={styles.organizationPageBlocks}>
           <OrganizationDetails
             organization={organizationStore.organization}
             onUpdate={handleUpdateOrganization}
@@ -102,11 +123,14 @@ export const OrganizationPage: React.FC = observer(() => {
           />
 
           {contactStore.contact && (
-            <div className={styles.organizationPage__contactBlock}>
+            <div className={styles.organizationPageContactBlock}>
               {/* Contact details will be implemented here */}
               <div className={styles.contactPlaceholder}>
                 <h3>Contacts</h3>
-                <p>Responsible person: {contactStore.contact.firstname} {contactStore.contact.lastname}</p>
+                <p>
+                  Responsible person: {contactStore.contact.firstname}{" "}
+                  {contactStore.contact.lastname}
+                </p>
                 <p>Phone: {contactStore.contact.phone}</p>
                 <p>Email: {contactStore.contact.email}</p>
               </div>
@@ -114,11 +138,14 @@ export const OrganizationPage: React.FC = observer(() => {
           )}
 
           {organizationStore.organization.photos.length > 0 && (
-            <div className={styles.organizationPage__photosBlock}>
+            <div className={styles.organizationPagePhotosBlock}>
               <h3>Photos</h3>
-              <div className={styles.organizationPage__photos}>
+              <div className={styles.organizationPagePhotos}>
                 {organizationStore.organization.photos.map((photo) => (
-                  <div key={photo.name} className={styles.organizationPage__photo}>
+                  <div
+                    key={photo.name}
+                    className={styles.organizationPagePhoto}
+                  >
                     <img src={photo.thumbpath} alt="" />
                   </div>
                 ))}
@@ -128,18 +155,12 @@ export const OrganizationPage: React.FC = observer(() => {
         </div>
       </div>
 
-      <Modal
-        isOpen={showDeleteModal}
-        onClose={() => setShowDeleteModal(false)}
-      >
-        <div className={styles.organizationPage__deleteModal}>
+      <Modal isOpen={showDeleteModal} onClose={() => setShowDeleteModal(false)}>
+        <div className={styles.organizationPageDeleteModal}>
           <h2>Remove the Organization?</h2>
           <p>Are you sure you want to remove this Organization?</p>
-          <div className={styles.organizationPage__deleteActions}>
-            <Button
-              variant="outline"
-              onClick={() => setShowDeleteModal(false)}
-            >
+          <div className={styles.organizationPageDeleteActions}>
+            <Button variant="outline" onClick={() => setShowDeleteModal(false)}>
               No
             </Button>
             <Button

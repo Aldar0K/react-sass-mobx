@@ -1,0 +1,51 @@
+.button-side-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; // layout_D7G9I6 из Figma
+  height: 36px; // автоматическая высота по padding 8px + иконка 20px
+  padding: 8px; // layout_D7G9I6 из Figma
+  border: none;
+  border-radius: $border-radius-md; // 8px
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: transparent; // Regular state
+  position: relative;
+  overflow: hidden;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  // Hover состояние
+  &:hover:not(:disabled):not(&--active) {
+    background-color: rgba(255, 255, 255, 0.1); // fill_CICIPW из Figma
+  }
+
+  // Active состояние (выбранная кнопка)
+  &--active {
+    background-color: rgba(255, 255, 255, 0.2); // fill_NM42QU из Figma
+  }
+
+  // Иконка
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  // Состояние disabled
+  &--disabled {
+    .button-side-menu__icon {
+      opacity: 0.3;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+// Переменные и миксины подключаются автоматически через vite.config.ts
+
+.navigation-item {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+  padding: 10px $spacing-6xl 10px $spacing-lg;
+  border-radius: $border-radius-md;
+  @include text-body;
+  color: $color-primary;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+
+  &:hover {
+    border-color: $color-border-default;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-border-focus;
+  }
+
+  &__active {
+    background-color: $color-primary;
+    color: $color-text-white;
+    box-shadow: $shadow-button;
+
+    &:hover {
+      border-color: transparent;
+    }
+  }
+}
