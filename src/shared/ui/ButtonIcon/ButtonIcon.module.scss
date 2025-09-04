@@ -1,0 +1,89 @@
+.button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: $border-radius-md; // 8px
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  // Size variants (точно по дизайну Figma Icon Button)
+  &--mini {
+    width: 28px;
+    height: 28px;
+    padding: 6px; // layout_EIFVRG из Figma (padding: 6px)
+  }
+
+  &--normal {
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+  }
+
+  // Variant: Filled (темный фон как в Figma Icon Button)
+  &--filled {
+    background-color: $color-primary; // #3B3B3B
+    box-shadow: $shadow-button; // 0px 3px 8px 0px rgba(0, 0, 0, 0.12)
+
+    &:hover:not(:disabled)::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.2); // fill_UL7ZN0 из Figma
+      border-radius: inherit;
+      z-index: 1;
+    }
+
+    &:active:not(:disabled)::before {
+      background-color: rgba(255, 255, 255, 0.3); // fill_41TYN5 из Figma
+    }
+
+    &--active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  // Variant: Flattened (прозрачный фон как "Clickable Icon" из Figma)
+  &--flattened {
+    background-color: transparent;
+
+    &:hover:not(:disabled) {
+      background-color: rgba(59, 59, 59, 0.05); // layout_4AX6CL opacity: 0.05
+    }
+
+    &:active:not(:disabled) {
+      background-color: rgba(153, 129, 255, 0.2); // fill_TX18UA opacity: 0.2
+    }
+
+    &--active {
+      background-color: rgba(59, 59, 59, 0.1);
+    }
+  }
+
+  &__icon {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &--disabled::before {
+    display: none !important;
+  }
+}

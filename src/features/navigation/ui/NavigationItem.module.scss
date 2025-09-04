@@ -3,18 +3,25 @@
 .navigation-item {
   display: flex;
   align-items: center;
-  gap: $spacing-lg;
-  padding: 10px $spacing-6xl 10px $spacing-lg;
-  border-radius: $border-radius-md;
-  @include text-body;
-  color: $color-primary;
-  font-weight: $font-weight-semibold;
+  gap: 12px; // gap из layout_M1UFJG
+  padding: 10px 40px 10px 12px; // padding из layout_M1UFJG (точно по Figma)
+  border-radius: 8px; // borderRadius из Figma
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.2); // stroke_F48090 из Figma
   cursor: pointer;
   transition: all 0.2s ease;
-  border: 1px solid transparent;
+
+  // Typography точно по Figma (style_PC59R8)
+  font-family: $font-family; // Poppins
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.5384615384615385em;
+  letter-spacing: 3.6923076097781844%;
+  text-align: center;
+  color: #3b3b3b; // fill_PDH40J из Figma
 
   &:hover {
-    border-color: $color-border-default;
+    border-color: rgba(0, 0, 0, 0.4); // стандартный hover для outline кнопок
   }
 
   &:focus {
@@ -22,10 +29,12 @@
     border-color: $color-border-focus;
   }
 
+  // Активное состояние - filled кнопка (layout_VYGA2D)
   &__active {
-    background-color: $color-primary;
-    color: $color-text-white;
-    box-shadow: $shadow-button;
+    background-color: #3b3b3b; // fill_PDH40J из Figma
+    color: rgba(255, 255, 255, 0.95); // fill_I7REK0 из Figma
+    border-color: transparent;
+    box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.12); // effect_7WGSIQ из Figma
 
     &:hover {
       border-color: transparent;

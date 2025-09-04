@@ -1,4 +1,4 @@
-import { CompanyIcon } from "@/shared/ui";
+import { ClientIcon, CompanyIcon, ContractorIcon } from "@/shared/ui";
 import type { INavigationItem } from "./types";
 
 export const NAVIGATION_ITEMS: INavigationItem[] = [
@@ -12,14 +12,14 @@ export const NAVIGATION_ITEMS: INavigationItem[] = [
   {
     id: "contractors",
     label: "Contractors",
-    icon: CompanyIcon,
+    icon: ContractorIcon,
     path: "/contractors",
     isActive: false,
   },
   {
     id: "clients",
     label: "Clients",
-    icon: CompanyIcon,
+    icon: ClientIcon,
     path: "/clients",
     isActive: false,
   },

@@ -38,8 +38,8 @@ export const NavigationItem: React.FC<NavigationItemProps> = observer(
         aria-label={`Navigate to ${item.label}`}
       >
         <IconComponent
-          size={20}
-          color={item.isActive ? "#FFFFFF" : "#3B3B3B"}
+          size={16}
+          color={item.isActive ? "rgba(255, 255, 255, 0.95)" : "#3B3B3B"}
         />
         <span>{item.label}</span>
       </div>

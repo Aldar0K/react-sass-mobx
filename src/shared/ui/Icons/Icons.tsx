@@ -260,6 +260,75 @@ export const CompanyIcon: React.FC<IconProps> = ({
   </svg>
 );
 
+// Иконка архива для Contractors
+export const ContractorIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = "currentColor",
+  className = "",
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 16 16"
+    fill="none"
+    className={className}
+  >
+    <path
+      d="M2.27 3.71L13.72 3.71"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M1 10.55L15 10.55"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <rect
+      x="6.09"
+      y="2.91"
+      width="3.81"
+      height="7.64"
+      stroke={color}
+      strokeWidth="1.5"
+      fill="none"
+    />
+  </svg>
+);
+
+// Иконка пользователя для Clients
+export const ClientIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = "currentColor",
+  className = "",
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 16 16"
+    fill="none"
+    className={className}
+  >
+    <path
+      d="M8 6.4C9.32548 6.4 10.4 5.32548 10.4 4C10.4 2.67452 9.32548 1.6 8 1.6C6.67452 1.6 5.6 2.67452 5.6 4C5.6 5.32548 6.67452 6.4 8 6.4Z"
+      stroke={color}
+      strokeWidth="1.5"
+      fill="none"
+    />
+    <path
+      d="M1.6 14.4C1.6 10.8608 4.46079 8 8 8C11.5392 8 14.4 10.8608 14.4 14.4"
+      stroke={color}
+      strokeWidth="1.5"
+      fill="none"
+    />
+  </svg>
+);
+
 // Иконка поиска - точно по дизайну
 export const SearchIcon: React.FC<IconProps> = ({
   size = 20,

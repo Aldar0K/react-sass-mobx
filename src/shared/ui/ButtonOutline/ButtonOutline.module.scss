@@ -1,0 +1,115 @@
+.button-outline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-border-default; // rgba(0, 0, 0, 0.2)
+  border-radius: $border-radius-md; // 8px
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  font-family: $font-family;
+  font-weight: $font-weight-semibold; // 600
+  text-align: center;
+
+  &:focus {
+    outline: none;
+    border-color: $color-accent; // #35CDFD
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  // Hover состояние
+  &:hover:not(:disabled) {
+    border-color: rgba(0, 0, 0, 0.4); // stroke_XUE9DD из Figma
+  }
+
+  // Active состояние
+  &:active:not(:disabled) {
+    border-color: $color-secondary; // #6243E6 (stroke_VN6393 из Figma)
+  }
+
+  // Размеры кнопки
+  &--normal {
+    height: 40px;
+    font-size: 13px;
+    line-height: 1.5384615384615385em; // style_JD1GBL из Figma
+    letter-spacing: 3.6923076097781844%;
+
+    // Padding зависит от типа содержимого
+    &.button-outline--text-only {
+      padding: 10px 12px; // layout_D3XCVI из Figma
+    }
+
+    &.button-outline--icon-text {
+      padding: 10px 40px 10px 12px; // layout_YT8JAN из Figma
+    }
+
+    &.button-outline--icon-only {
+      padding: 10px 12px;
+      width: auto;
+      min-width: 40px;
+    }
+  }
+
+  &--mini {
+    height: 28px;
+    font-size: 11px;
+    line-height: 1.8181818181818181em; // style_JCTC3T из Figma
+    letter-spacing: 4.36363626610149%;
+
+    // Padding для mini размера
+    &.button-outline--text-only,
+    &.button-outline--icon-text,
+    &.button-outline--icon-only {
+      padding: 4px 8px; // layout_XOJMI8 из Figma
+    }
+  }
+
+  // Контейнер содержимого
+  &__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px; // normal size gap из Figma
+
+    .button-outline--mini & {
+      gap: 8px; // mini size gap из Figma
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__text {
+    color: $color-primary; // #3B3B3B (fill_LPDSCO из Figma)
+    white-space: nowrap;
+
+    // Hover состояние текста
+    .button-outline:hover:not(:disabled) & {
+      color: #6d4aff; // fill_ZL71FG из Figma
+    }
+
+    // Active состояние текста
+    .button-outline:active:not(:disabled) & {
+      color: $color-secondary; // #6243E6 (fill_0GH9W7 из Figma)
+    }
+  }
+
+  // Состояние disabled
+  &--disabled {
+    .button-outline__text {
+      color: rgba(59, 59, 59, 0.5);
+    }
+  }
+}
