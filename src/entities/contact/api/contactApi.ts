@@ -10,7 +10,7 @@ export const contactApi = {
   async updateContact(id: string, data: IUpdateContactRequest): Promise<IContact> {
     return apiClient.request<IContact>(CONTACT_ENDPOINTS.UPDATE_CONTACT(id), {
       method: 'PATCH',
-      data,
+      body: JSON.stringify(data),
     });
   },
 };

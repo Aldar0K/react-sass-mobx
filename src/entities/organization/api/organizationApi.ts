@@ -14,7 +14,7 @@ export const organizationApi = {
   async updateOrganization(id: string, data: IUpdateOrganizationRequest): Promise<IOrganization> {
     return apiClient.request<IOrganization>(ORGANIZATION_ENDPOINTS.UPDATE_COMPANY(id), {
       method: 'PATCH',
-      data,
+      body: JSON.stringify(data),
     });
   },
 
@@ -25,16 +25,7 @@ export const organizationApi = {
   },
 
   async uploadImage(id: string, file: File): Promise<IUploadPhotoResponse> {
-    const formData = new FormData();
-    formData.append('file', file);
-    
-    return apiClient.request<IUploadPhotoResponse>(ORGANIZATION_ENDPOINTS.UPLOAD_IMAGE(id), {
-      method: 'POST',
-      data: formData,
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
+    return apiClient.uploadFile<IUploadPhotoResponse>(ORGANIZATION_ENDPOINTS.UPLOAD_IMAGE(id), file);
   },
 
   async deleteImage(id: string, imageName: string): Promise<void> {

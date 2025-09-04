@@ -6,6 +6,7 @@ $color-danger: #D72323;
 
 $color-white: #FFFFFF;
 $color-background: #AECDD3;
+$color-surface: #FFFFFF;
 $color-light-gray: rgba(0, 0, 0, 0.03);
 
 // Текстовые цвета
@@ -15,6 +16,7 @@ $color-text-disabled: rgba(0, 0, 0, 0.3);
 $color-text-white: rgba(255, 255, 255, 0.95);
 
 // Границы
+$color-border: rgba(0, 0, 0, 0.2);
 $color-border-default: rgba(0, 0, 0, 0.2);
 $color-border-hover: rgba(0, 0, 0, 0.4);
 $color-border-focus: #35CDFD;
