@@ -7,8 +7,7 @@ export interface ButtonIconProps {
     color?: string;
     className?: string;
   }>;
-  size?: "mini" | "normal";
-  variant?: "filled" | "flattened";
+  size?: 28 | 32 | 36; // точные размеры из Figma
   isActive?: boolean;
   disabled?: boolean;
   className?: string;
@@ -20,8 +19,7 @@ export interface ButtonIconProps {
 
 export const ButtonIcon: React.FC<ButtonIconProps> = ({
   icon: IconComponent,
-  size = "mini",
-  variant = "filled",
+  size = 32,
   isActive = false,
   disabled = false,
   className = "",
@@ -32,9 +30,8 @@ export const ButtonIcon: React.FC<ButtonIconProps> = ({
 }) => {
   const buttonClass = [
     styles.buttonIcon,
-    styles[`buttonIcon--${size}`],
-    styles[`buttonIcon--${variant}`],
-    isActive && styles[`buttonIcon--${variant}--active`],
+    styles[`buttonIcon--${size}px`],
+    isActive && styles["buttonIcon--active"],
     disabled && styles["buttonIcon--disabled"],
     className,
   ]
@@ -56,20 +53,15 @@ export const ButtonIcon: React.FC<ButtonIconProps> = ({
   };
 
   const getIconColor = (): string => {
-    if (disabled) return "rgba(255, 255, 255, 0.3)";
-    if (variant === "filled") return "#FFFFFF";
-    return "#3B3B3B"; // для flattened варианта
+    if (disabled) return "rgba(0, 0, 0, 0.3)";
+    return "#3B3B3B"; // стандартный цвет иконки
   };
 
   const getIconSize = (): number => {
-    switch (size) {
-      case "mini":
-        return 16; // 28px button -> 16px icon (из Figma Icon Button)
-      case "normal":
-        return 20; // 36px button -> 20px icon
-      default:
-        return 16;
-    }
+    // Стандартная иконка 20px для кнопки 32px
+    if (size === 32) return 20;
+    // Для других размеров пропорционально
+    return Math.round(size * 0.625);
   };
 
   return (

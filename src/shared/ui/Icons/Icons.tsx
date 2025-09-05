@@ -154,19 +154,27 @@ export const ArrowLeftIcon: React.FC<IconProps> = ({
   className = "",
 }) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
     viewBox="0 0 20 20"
     fill="none"
     className={className}
   >
-    <path
-      d="M7 4L4 10L7 16"
-      stroke={color}
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <g clip-path="url(#clip0_22084_407)">
+      <path
+        d="M13 4L7 10L13 16"
+        stroke={color}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_22084_407">
+        <rect width={size} height={size} fill="white" />
+      </clipPath>
+    </defs>
   </svg>
 );
 

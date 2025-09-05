@@ -1,0 +1,45 @@
+.company-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-xl;
+
+  @include element("left") {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-lg;
+  }
+
+  @include element("title") {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  @include element("company") {
+    // Accent/Bold по макету
+    font-family: $font-family;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px; // 171.429%
+    letter-spacing: 0.3px;
+    color: $color-text-primary;
+    margin: 0;
+  }
+
+  @include element("subtitle") {
+    // Caption/Regular по макету
+    font-family: $font-family;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 16px; // 145.455%
+    letter-spacing: 0.24px;
+    color: $color-text-secondary;
+    margin: 0;
+  }
+
+  @include element("actions") {
+    display: inline-flex;
+    gap: $spacing-xs;
+  }
+}
