@@ -9,11 +9,7 @@ interface NavigationItemProps {
 }
 
 export const NavigationItem: React.FC<NavigationItemProps> = observer(
-  ({ item, onClick }) => {
-    const handleClick = (): void => {
-      onClick(item.id);
-    };
-
+  ({ item }) => {
     const itemClass = [
       styles.navigationItem,
       item.isActive ? styles.navigationItemActive : "",
@@ -26,13 +22,11 @@ export const NavigationItem: React.FC<NavigationItemProps> = observer(
     return (
       <div
         className={itemClass}
-        onClick={handleClick}
         role="button"
         tabIndex={0}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
-            handleClick();
           }
         }}
         aria-label={`Navigate to ${item.label}`}

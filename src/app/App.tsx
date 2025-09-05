@@ -1,14 +1,14 @@
-import { OrganizationPage } from "@/pages/organization/ui/OrganizationPage";
 import "@/shared/styles/global.scss";
 import { observer } from "mobx-react-lite";
 import React from "react";
-import styles from "./styles/App.module.scss";
+import { BrowserRouter } from "react-router-dom";
+import { AppRouter } from "./routes/AppRouter";
 
 const App: React.FC = observer(() => {
   return (
-    <div className={styles.app}>
-      <OrganizationPage />
-    </div>
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
   );
 });
 

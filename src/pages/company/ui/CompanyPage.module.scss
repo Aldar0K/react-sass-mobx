@@ -1,0 +1,40 @@
+.company-page {
+  display: block; // Sidebar вынесен в общий MainLayout
+  min-height: 100%;
+  background-color: $color-surface;
+
+  @include element("content") {
+    padding: $spacing-3xl $spacing-4xl;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-3xl;
+  }
+
+  @include element("header") {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @include element("header-title") {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+
+    h1 {
+      @include text-heading-main;
+      margin: 0;
+    }
+
+    p {
+      @include text-label;
+      margin: 0;
+    }
+  }
+
+  @include element("body") {
+    display: grid;
+    grid-template-columns: 1fr 360px; // Контент + правый столбец (контакт)
+    gap: $spacing-3xl;
+  }
+}
