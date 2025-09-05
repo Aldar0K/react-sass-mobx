@@ -6,10 +6,9 @@
   background-color: $color-surface;
 
   @include element("content") {
-    padding: $spacing-3xl $spacing-4xl;
+    padding: $spacing-6xl $spacing-5xl;
     display: flex;
     flex-direction: column;
-    gap: $spacing-3xl;
     overflow: auto;
     min-width: 0;
     width: 100%;

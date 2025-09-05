@@ -8,7 +8,7 @@ import type {
 
 export class OrganizationStore {
   organization: IOrganization | null = null;
-  isLoading = false;
+  isLoading = true;
   error: string | null = null;
 
   constructor() {

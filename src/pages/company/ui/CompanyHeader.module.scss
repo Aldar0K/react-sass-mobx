@@ -1,4 +1,6 @@
 .company-header {
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -8,6 +10,12 @@
     display: inline-flex;
     align-items: center;
     gap: $spacing-lg;
+  }
+
+  @include element("back-button") {
+    position: absolute;
+    top: 4px;
+    left: -64px;
   }
 
   @include element("title") {

@@ -4,7 +4,7 @@ import type { IContact, IUpdateContactRequest } from "./types";
 
 export class ContactStore {
   contact: IContact | null = null;
-  isLoading = false;
+  isLoading = true;
   error: string | null = null;
 
   constructor() {

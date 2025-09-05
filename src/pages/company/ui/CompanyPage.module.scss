@@ -4,35 +4,22 @@
   background-color: $color-surface;
 
   @include element("content") {
-    padding: $spacing-3xl $spacing-4xl;
     display: flex;
     flex-direction: column;
     gap: $spacing-3xl;
-    overflow: auto;
     max-width: 640px; // ограничение ширины контента по макету
     margin: 0 auto; // центрирование контента
+  }
+
+  @include element("loading") {
+    @include flex-center;
+    height: 100%;
   }
 
   @include element("header") {
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-
-  @include element("header-title") {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-xs;
-
-    h1 {
-      @include text-heading-main;
-      margin: 0;
-    }
-
-    p {
-      @include text-label;
-      margin: 0;
-    }
   }
 
   @include element("body") {

@@ -20,27 +20,25 @@
   }
 
   // Size variants (точно по дизайну Figma Icon Button)
-  &--28px {
+  &.buttonIcon--28px {
     width: 28px;
     height: 28px;
     padding: 6px; // layout_EIFVRG из Figma (padding: 6px)
   }
 
-  &--32px {
+  &.buttonIcon--32px {
     width: 32px;
     height: 32px;
     padding: 7px;
   }
 
-  &--36px {
+  &.buttonIcon--36px {
     width: 36px;
     height: 36px;
     padding: 8px;
   }
 
   // Стандартный стиль Icon Button из Figma
-  background-color: transparent;
-
   &:hover:not(:disabled) {
     background-color: rgba(59, 59, 59, 0.05); // layout_4AX6CL opacity: 0.05
   }
@@ -49,11 +47,11 @@
     background-color: rgba(59, 59, 59, 0.1);
   }
 
-  &--active {
+  &.buttonIcon--active {
     background-color: rgba(59, 59, 59, 0.1);
   }
 
-  &__icon {
+  .buttonIconIcon {
     position: relative;
     z-index: 2;
     display: flex;
@@ -61,7 +59,7 @@
     justify-content: center;
   }
 
-  &--disabled::before {
+  &.buttonIcon--disabled::before {
     display: none !important;
   }
 }
