@@ -14,15 +14,28 @@
 
   @include element("title") {
     @include flex-column;
+    gap: $spacing-xs; // плотный зазор между названием и сабтайтлом по Figma
   }
 
   @include element("company") {
-    @include text-heading-section;
+    // Точная типографика по Figma для названия компании (Accent/Bold)
+    font-family: $font-family;
+    font-weight: $font-weight-bold; // 700
+    font-size: $font-size-md; // 14px
+    line-height: 24px; // 171.429%
+    letter-spacing: 0.3px;
+    color: $color-text-primary; // rgba(0, 0, 0, 0.8)
     margin: 0;
   }
 
   @include element("subtitle") {
-    @include text-label;
+    // Точная типографика по Figma для сабтайтла
+    font-family: $font-family;
+    font-weight: $font-weight-normal; // 400
+    font-size: $font-size-xs; // 11px
+    line-height: 16px;
+    letter-spacing: 0.24px;
+    color: $color-text-secondary; // rgba(0, 0, 0, 0.5)
     margin: 0;
   }
 
