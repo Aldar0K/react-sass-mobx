@@ -21,7 +21,10 @@
 }
 
 .companyPage__body {
-  display: grid;
-  grid-template-columns: 1fr 360px; // Контент + правый столбец (контакт)
-  gap: $spacing-3xl;
+  display: flex;
+  flex-direction: column;
+}
+
+.companyPage__details {
+  margin-bottom: $spacing-xl;
 }

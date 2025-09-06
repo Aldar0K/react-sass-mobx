@@ -23,6 +23,10 @@ export interface IOrganization {
   photos: IPhoto[];
   createdAt: string; // ISO date string
   updatedAt: string; // ISO date string
+  // Дополнительные поля для Company Details
+  agreementNumber?: string;
+  agreementDate?: string;
+  companyType?: string;
 }
 
 // Запросы на обновление
@@ -35,6 +39,10 @@ export interface IUpdateOrganizationRequest {
     issue_date?: string; // ISO date string
   };
   type?: string[];
+  // Дополнительные поля для Company Details
+  agreementNumber?: string;
+  agreementDate?: string;
+  companyType?: string;
 }
 
 // Ответ загрузки фото

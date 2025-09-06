@@ -2,13 +2,13 @@ import React from "react";
 import styles from "./ButtonFlattened.module.scss";
 
 export interface ButtonFlattenedProps {
+  type?: "button" | "submit" | "reset";
   label?: string;
   icon?: React.ComponentType<{
     size?: number;
     color?: string;
     className?: string;
   }>;
-  size?: "mini" | "normal";
   disabled?: boolean;
   className?: string;
   onClick?: () => void;
@@ -18,9 +18,9 @@ export interface ButtonFlattenedProps {
 }
 
 export const ButtonFlattened: React.FC<ButtonFlattenedProps> = ({
+  type = "button",
   label,
   icon: IconComponent,
-  size = "normal",
   disabled = false,
   className = "",
   onClick,
@@ -28,16 +28,14 @@ export const ButtonFlattened: React.FC<ButtonFlattenedProps> = ({
   tabIndex = 0,
   onKeyDown,
 }) => {
-  // Валидация: должен быть передан хотя бы label или icon
   if (!label && !IconComponent) {
     console.warn("ButtonFlattened: Either label or icon must be provided");
     return null;
   }
 
   const buttonClass = [
-    styles.buttonFlattened,
-    styles[`buttonFlattened--${size}`],
-    disabled && styles["buttonFlattened--disabled"],
+    styles["button-flattened"],
+    disabled && styles["button-flattened_disabled"],
     className,
   ]
     .filter(Boolean)
@@ -59,36 +57,31 @@ export const ButtonFlattened: React.FC<ButtonFlattenedProps> = ({
 
   const getIconColor = (): string => {
     if (disabled) return "rgba(59, 59, 59, 0.5)";
-    return "#3B3B3B"; // цвет иконки для flattened кнопки
+    return "#3b3b3b";
   };
 
   const getIconSize = (): number => {
-    return 16; // Стандартный размер иконки
+    return 16;
   };
-
-  // Определяем тип содержимого для правильного padding
-  const hasIcon = !!IconComponent;
-  const hasLabel = !!label;
-  const contentType =
-    hasIcon && hasLabel ? "icon-text" : hasIcon ? "icon-only" : "text-only";
 
   return (
     <button
-      className={`${buttonClass} ${styles[`buttonFlattened--${contentType}`]}`}
+      type={type}
+      className={buttonClass}
       onClick={handleClick}
       disabled={disabled}
       aria-label={ariaLabel || label}
       tabIndex={tabIndex}
       onKeyDown={handleKeyDown}
     >
-      <span className={styles.buttonFlattenedContent}>
-        {IconComponent && (
-          <span className={styles.buttonFlattenedIcon}>
-            <IconComponent size={getIconSize()} color={getIconColor()} />
-          </span>
-        )}
-        {label && <span className={styles.buttonFlattenedText}>{label}</span>}
-      </span>
+      {IconComponent && (
+        <span className={styles["button-flattened__icon"]}>
+          <IconComponent size={getIconSize()} color={getIconColor()} />
+        </span>
+      )}
+      {label && (
+        <span className={styles["button-flattened__text"]}>{label}</span>
+      )}
     </button>
   );
 };

@@ -1,0 +1,71 @@
+@import "@/shared/styles/variables";
+@import "@/shared/styles/mixins";
+
+.companyDetailsEdit {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.companyDetailsEdit__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.companyDetailsEdit__title {
+  color: var(--black-black-80, rgba(0, 0, 0, 0.8));
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0.3px;
+  margin: 0;
+  flex: 1;
+}
+
+.companyDetailsEdit__actions {
+  display: flex;
+  gap: 12px;
+}
+
+.companyDetailsEdit__saveButton,
+.companyDetailsEdit__cancelButton {
+  height: 28px;
+  padding: 4px 12px 4px 8px;
+  gap: 12px;
+}
+
+.companyDetailsEdit__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.companyDetailsEdit__input {
+  width: 100%;
+}
+
+.companyDetailsEdit__select {
+  position: relative;
+  width: 100%;
+}
+
+.companyDetailsEdit__selectInput {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.companyDetailsEdit__selectIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.8;
+  pointer-events: none;
+}

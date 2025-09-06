@@ -1,4 +1,5 @@
 import { rootStore } from "@/app/model/root.store";
+import { CompanyDetails } from "@/widgets/company-details";
 import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
 import { CompanyHeader } from "./CompanyHeader";
@@ -8,7 +9,6 @@ export const CompanyPage: React.FC = observer(() => {
   const { organizationStore, contactStore } = rootStore;
 
   useEffect(() => {
-    // Initialize with demo data
     const initializeData = async (): Promise<void> => {
       try {
         await rootStore.authenticate("testuser");
@@ -24,27 +24,8 @@ export const CompanyPage: React.FC = observer(() => {
     };
 
     initializeData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // const handleUpdateOrganization = async (
-  //   data: IUpdateOrganizationRequest,
-  // ): Promise<void> => {
-  //   if (organizationStore.organization) {
-  //     await organizationStore.updateOrganization(
-  //       organizationStore.organization.id,
-  //       data,
-  //     );
-  //   }
-  // };
-
-  // const handleDeleteOrganization = async (): Promise<void> => {
-  //   if (organizationStore.organization) {
-  //     await organizationStore.deleteOrganization(
-  //       organizationStore.organization.id,
-  //     );
-  //     setShowDeleteModal(false);
-  //   }
-  // };
 
   if (!organizationStore.organization) {
     return (
@@ -68,7 +49,10 @@ export const CompanyPage: React.FC = observer(() => {
           className={styles.companyPage__header}
         />
         <section className={styles.companyPage__body}>
-          {/* TODO: заполнить блоки согласно макету в следующих шагах */}
+          <CompanyDetails
+            organization={organizationStore.organization}
+            className={styles.companyPage__details}
+          />
         </section>
       </main>
     </div>
