@@ -127,7 +127,9 @@
   font-size: $font-size-md;
   line-height: $line-height-loose;
   color: $color-text-primary;
-  transition: border-color 0.2s ease;
+  transition:
+    border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   height: 40px;
 
   &:hover {
@@ -138,7 +140,7 @@
   &:focus-within {
     outline: none;
     border-color: $color-border-focus;
-    border-width: 2px;
+    box-shadow: 0 0 0 1px $color-border-focus;
   }
 
   &::placeholder {

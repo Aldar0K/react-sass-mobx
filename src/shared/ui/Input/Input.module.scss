@@ -4,57 +4,57 @@
 .input {
   @include flex-column;
   width: 100%;
+}
 
-  @include element("container") {
-    @include input-base;
-    position: relative;
-  }
+.input__container {
+  @include input-base;
+  position: relative;
+}
 
-  @include element("field") {
-    flex: 1;
-    width: 100%;
-    border: none;
-    outline: none;
-    background: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    color: inherit;
+.input__field {
+  flex: 1;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
 
-    &::placeholder {
-      color: $color-text-secondary;
-    }
-  }
-
-  @include element("icon") {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
+  &::placeholder {
     color: $color-text-secondary;
-    opacity: 0.8;
+  }
+}
+
+.input__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: $color-text-secondary;
+  opacity: 0.8;
+}
+
+.input__error {
+  @include text-label;
+  color: $color-danger;
+  margin-top: $spacing-sm;
+}
+
+.input_error {
+  .input__container {
+    border-color: $color-danger;
+  }
+}
+
+.input_withIcon {
+  .input__container {
+    padding-right: $spacing-5xl;
   }
 
-  @include element("error") {
-    @include text-label;
-    color: $color-danger;
-    margin-top: $spacing-sm;
-  }
-
-  @include modifier("error") {
-    .input__container {
-      border-color: $color-danger;
-    }
-  }
-
-  @include modifier("with-icon") {
-    .input__container {
-      padding-right: $spacing-5xl;
-    }
-
-    .input__icon {
-      position: absolute;
-      right: $spacing-lg;
-    }
+  .input__icon {
+    position: absolute;
+    right: $spacing-lg;
   }
 }

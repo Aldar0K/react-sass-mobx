@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./ButtonOutline.module.scss";
 
 export interface ButtonOutlineProps {
+  type?: "button" | "submit" | "reset";
   label?: string;
   icon?: React.ComponentType<{
     size?: number;
@@ -18,6 +19,7 @@ export interface ButtonOutlineProps {
 }
 
 export const ButtonOutline: React.FC<ButtonOutlineProps> = ({
+  type = "button",
   label,
   icon: IconComponent,
   size = "normal",
@@ -74,6 +76,7 @@ export const ButtonOutline: React.FC<ButtonOutlineProps> = ({
 
   return (
     <button
+      type={type}
       className={`${buttonClass} ${styles[`buttonOutline_${contentType}`]}`}
       onClick={handleClick}
       disabled={disabled}

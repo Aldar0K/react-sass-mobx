@@ -1,6 +1,7 @@
 import { IOrganization } from "@/entities/organization";
 import { DeleteCompanyButton } from "@/features/delete-company";
-import { ArrowLeftIcon, ButtonIcon, EditIcon } from "@/shared/ui";
+import { EditCompanyNameButton } from "@/features/edit-company-name";
+import { ArrowLeftIcon, ButtonIcon } from "@/shared/ui";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./CompanyHeader.module.scss";
@@ -39,14 +40,11 @@ export const CompanyHeader: React.FC<CompanyHeaderProps> = ({
       </div>
 
       <div className={styles.companyHeader__actions}>
-        <ButtonIcon
-          icon={EditIcon}
-          size={32}
-          onClick={() => {
-            // TODO: implement edit functionality
-            console.log("Edit clicked");
+        <EditCompanyNameButton
+          organization={organization}
+          onSuccess={() => {
+            console.log("Company name updated successfully");
           }}
-          aria-label="Edit company"
         />
         <DeleteCompanyButton
           organization={organization}

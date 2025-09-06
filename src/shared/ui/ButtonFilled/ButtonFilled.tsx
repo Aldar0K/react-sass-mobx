@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./ButtonFilled.module.scss";
 
 export interface ButtonFilledProps {
+  type?: "button" | "submit" | "reset";
   label?: string;
   icon?: React.ComponentType<{
     size?: number;
@@ -18,6 +19,7 @@ export interface ButtonFilledProps {
 }
 
 export const ButtonFilled: React.FC<ButtonFilledProps> = ({
+  type = "button",
   label,
   icon: IconComponent,
   size = "normal",
@@ -74,6 +76,7 @@ export const ButtonFilled: React.FC<ButtonFilledProps> = ({
 
   return (
     <button
+      type={type}
       className={`${buttonClass} ${styles[`buttonFilled_${contentType}`]}`}
       onClick={handleClick}
       disabled={disabled}

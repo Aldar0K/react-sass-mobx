@@ -5,7 +5,6 @@ import styles from "./Modal.module.scss";
 export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSuccess?: () => void;
   children: React.ReactNode;
   className?: string;
 }
@@ -13,7 +12,6 @@ export interface ModalProps {
 export const Modal: React.FC<ModalProps> = ({
   isOpen,
   onClose,
-  onSuccess,
   children,
   className = "",
 }) => {
@@ -25,11 +23,6 @@ export const Modal: React.FC<ModalProps> = ({
     },
     [onClose],
   );
-
-  const handleSuccess = useCallback((): void => {
-    onSuccess?.();
-    onClose();
-  }, [onSuccess, onClose]);
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent): void => {

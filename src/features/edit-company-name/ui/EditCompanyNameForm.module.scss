@@ -1,0 +1,32 @@
+.editCompanyNameForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.editCompanyNameForm__title {
+  margin-bottom: 24px;
+
+  color: var(--black-black-80, rgba(0, 0, 0, 0.8));
+  text-align: center;
+  font-family: $font-family;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0.3px;
+}
+
+.editCompanyNameForm__field {
+  margin-bottom: 24px;
+}
+
+.editCompanyNameForm__actions {
+  display: flex;
+  gap: 16px;
+}
+
+.editCompanyNameForm__cancelButton,
+.editCompanyNameForm__saveButton {
+  flex: 1;
+}

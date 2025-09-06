@@ -30,8 +30,8 @@ export const Input: React.FC<InputProps> = observer(
 
     const containerClass = [
       styles.input,
-      error && styles["input--error"],
-      icon && styles["input--with-icon"],
+      error && styles.input_error,
+      icon && styles.input_withIcon,
       className,
     ]
       .filter(Boolean)
@@ -39,18 +39,18 @@ export const Input: React.FC<InputProps> = observer(
 
     return (
       <div className={containerClass}>
-        <div className={styles.inputContainer}>
+        <div className={styles.input__container}>
           <input
-            className={styles.inputField}
+            className={styles.input__field}
             type={type}
             value={value}
             onChange={handleChange}
             placeholder={placeholder}
             disabled={disabled}
           />
-          {icon && <span className={styles.inputIcon}>{icon}</span>}
+          {icon && <span className={styles.input__icon}>{icon}</span>}
         </div>
-        {error && <span className={styles.inputError}>{error}</span>}
+        {error && <span className={styles.input__error}>{error}</span>}
       </div>
     );
   },
