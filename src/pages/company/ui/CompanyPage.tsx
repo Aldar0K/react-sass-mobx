@@ -49,8 +49,8 @@ export const CompanyPage: React.FC = observer(() => {
   if (!organizationStore.organization) {
     return (
       <div className={styles.companyPage}>
-        <main className={styles.companyPageContent}>
-          <div className={styles.companyPageLoading}>
+        <main className={styles.companyPage__content}>
+          <div className={styles.companyPage__loading}>
             {organizationStore.isLoading
               ? "Loading..."
               : "No organization found"}
@@ -62,9 +62,12 @@ export const CompanyPage: React.FC = observer(() => {
 
   return (
     <div className={styles.companyPage}>
-      <main className={styles.companyPageContent}>
-        <CompanyHeader organization={organizationStore.organization} />
-        <section className={styles.companyPageBody}>
+      <main className={styles.companyPage__content}>
+        <CompanyHeader
+          organization={organizationStore.organization}
+          className={styles.companyPage__header}
+        />
+        <section className={styles.companyPage__body}>
           {/* TODO: заполнить блоки согласно макету в следующих шагах */}
         </section>
       </main>
