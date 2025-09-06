@@ -8,6 +8,7 @@ export interface ButtonIconProps {
     className?: string;
   }>;
   size?: 28 | 32 | 36; // точные размеры из Figma
+  color?: "default" | "red"; // цвет иконки
   isActive?: boolean;
   disabled?: boolean;
   className?: string;
@@ -20,6 +21,7 @@ export interface ButtonIconProps {
 export const ButtonIcon: React.FC<ButtonIconProps> = ({
   icon: IconComponent,
   size = 32,
+  color = "default",
   isActive = false,
   disabled = false,
   className = "",
@@ -54,13 +56,12 @@ export const ButtonIcon: React.FC<ButtonIconProps> = ({
 
   const getIconColor = (): string => {
     if (disabled) return "rgba(0, 0, 0, 0.3)";
-    return "#3B3B3B"; // стандартный цвет иконки
+    if (color === "red") return "#E53E3E";
+    return "#3B3B3B";
   };
 
   const getIconSize = (): number => {
-    // Стандартная иконка 20px для кнопки 32px
     if (size === 32) return 20;
-    // Для других размеров пропорционально
     return Math.round(size * 0.625);
   };
 

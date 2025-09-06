@@ -40,11 +40,10 @@
 }
 
 .companyHeader__subtitle {
-  // Caption/Regular по макету
   font-family: $font-family;
   font-size: 11px;
   font-weight: 400;
-  line-height: 16px; // 145.455%
+  line-height: 16px;
   letter-spacing: 0.24px;
   color: $color-text-secondary;
   margin: 0;
@@ -52,5 +51,5 @@
 
 .companyHeader__actions {
   display: flex;
-  gap: 8px;
+  gap: 4px;
 }

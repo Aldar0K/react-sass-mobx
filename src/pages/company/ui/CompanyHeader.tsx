@@ -1,10 +1,5 @@
 import { IOrganization } from "@/entities/organization";
-import {
-  ArrowLeftIcon,
-  ButtonFilled,
-  ButtonIcon,
-  ButtonOutline,
-} from "@/shared/ui";
+import { ArrowLeftIcon, ButtonIcon, EditIcon, TrashIcon } from "@/shared/ui";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./CompanyHeader.module.scss";
@@ -43,21 +38,24 @@ export const CompanyHeader: React.FC<CompanyHeaderProps> = ({
       </div>
 
       <div className={styles.companyHeader__actions}>
-        <ButtonOutline
-          label="Edit"
-          size="normal"
+        <ButtonIcon
+          icon={EditIcon}
+          size={32}
           onClick={() => {
             // TODO: implement edit functionality
             console.log("Edit clicked");
           }}
+          aria-label="Edit company"
         />
-        <ButtonFilled
-          label="Delete"
-          size="normal"
+        <ButtonIcon
+          icon={TrashIcon}
+          size={32}
+          color="red"
           onClick={() => {
             // TODO: implement delete functionality
             console.log("Delete clicked");
           }}
+          aria-label="Delete company"
         />
       </div>
     </header>
