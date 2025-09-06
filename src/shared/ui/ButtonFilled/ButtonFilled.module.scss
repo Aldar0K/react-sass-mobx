@@ -1,11 +1,11 @@
-.button-filled {
+.buttonFilled {
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
   border-radius: $border-radius-md; // 8px
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
   background-color: $color-primary; // #3B3B3B
@@ -42,38 +42,38 @@
   }
 
   // Размеры кнопки
-  &--normal {
+  &_normal {
     height: 40px;
     font-size: 13px;
     line-height: 1.5384615384615385em; // style_DPCKEP из Figma
     letter-spacing: 3.6923076097781844%;
 
     // Padding зависит от типа содержимого
-    &.button-filled--text-only {
+    &.buttonFilled_text-only {
       padding: 10px 12px; // layout_II01IJ из Figma
     }
 
-    &.button-filled--icon-text {
+    &.buttonFilled_icon-text {
       padding: 10px 40px 10px 12px; // layout_JPSHN1 из Figma
     }
 
-    &.button-filled--icon-only {
+    &.buttonFilled_icon-only {
       padding: 10px 12px;
       width: auto;
       min-width: 40px;
     }
   }
 
-  &--mini {
+  &_mini {
     height: 28px;
     font-size: 11px;
     line-height: 1.8181818181818181em; // style_A0EVSJ из Figma
     letter-spacing: 4.36363626610149%;
 
     // Padding для mini размера
-    &.button-filled--text-only,
-    &.button-filled--icon-text,
-    &.button-filled--icon-only {
+    &.buttonFilled_text-only,
+    &.buttonFilled_icon-text,
+    &.buttonFilled_icon-only {
       padding: 4px 8px; // layout_5L8P2M из Figma
     }
   }
@@ -87,7 +87,7 @@
     justify-content: center;
     gap: 12px; // normal size gap из Figma
 
-    .button-filled--mini & {
+    .buttonFilled_mini & {
       gap: 8px; // mini size gap из Figma
     }
   }
@@ -105,12 +105,12 @@
   }
 
   // Состояние disabled
-  &--disabled {
+  &_disabled {
     &::before {
       display: none !important;
     }
 
-    .button-filled__text {
+    .buttonFilled__text {
       color: rgba(255, 255, 255, 0.5);
     }
   }

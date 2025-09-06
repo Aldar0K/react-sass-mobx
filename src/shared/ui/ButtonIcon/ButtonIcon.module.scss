@@ -1,11 +1,11 @@
-.button-icon {
+.buttonIcon {
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
   background-color: transparent;
@@ -20,19 +20,19 @@
   }
 
   // Size variants (точно по дизайну Figma Icon Button)
-  &.buttonIcon--28px {
+  &_28px {
     width: 28px;
     height: 28px;
     padding: 6px; // layout_EIFVRG из Figma (padding: 6px)
   }
 
-  &.buttonIcon--32px {
+  &_32px {
     width: 32px;
     height: 32px;
     padding: 7px;
   }
 
-  &.buttonIcon--36px {
+  &_36px {
     width: 36px;
     height: 36px;
     padding: 8px;
@@ -47,19 +47,19 @@
     background-color: rgba(59, 59, 59, 0.1);
   }
 
-  &.buttonIcon--active {
+  &_active {
     background-color: rgba(59, 59, 59, 0.1);
   }
+}
 
-  .buttonIconIcon {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.buttonIcon__icon {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  &.buttonIcon--disabled::before {
-    display: none !important;
-  }
+.buttonIcon_disabled::before {
+  display: none !important;
 }

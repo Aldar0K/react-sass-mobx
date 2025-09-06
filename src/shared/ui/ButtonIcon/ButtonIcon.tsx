@@ -32,9 +32,9 @@ export const ButtonIcon: React.FC<ButtonIconProps> = ({
 }) => {
   const buttonClass = [
     styles.buttonIcon,
-    styles[`buttonIcon--${size}px`],
-    isActive && styles["buttonIcon--active"],
-    disabled && styles["buttonIcon--disabled"],
+    styles[`buttonIcon_${size}px`],
+    isActive && styles["buttonIcon_active"],
+    disabled && styles["buttonIcon_disabled"],
     className,
   ]
     .filter(Boolean)
@@ -74,7 +74,7 @@ export const ButtonIcon: React.FC<ButtonIconProps> = ({
       tabIndex={tabIndex}
       onKeyDown={handleKeyDown}
     >
-      <span className={styles.buttonIconIcon}>
+      <span className={styles.buttonIcon__icon}>
         <IconComponent size={getIconSize()} color={getIconColor()} />
       </span>
     </button>

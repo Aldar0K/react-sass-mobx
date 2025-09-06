@@ -36,8 +36,8 @@ export const ButtonOutline: React.FC<ButtonOutlineProps> = ({
 
   const buttonClass = [
     styles.buttonOutline,
-    styles[`buttonOutline--${size}`],
-    disabled && styles["buttonOutline--disabled"],
+    styles[`buttonOutline_${size}`],
+    disabled && styles["buttonOutline_disabled"],
     className,
   ]
     .filter(Boolean)
@@ -74,7 +74,7 @@ export const ButtonOutline: React.FC<ButtonOutlineProps> = ({
 
   return (
     <button
-      className={`${buttonClass} ${styles[`buttonOutline--${contentType}`]}`}
+      className={`${buttonClass} ${styles[`buttonOutline_${contentType}`]}`}
       onClick={handleClick}
       disabled={disabled}
       aria-label={ariaLabel || label}

@@ -36,8 +36,8 @@ export const ButtonFilled: React.FC<ButtonFilledProps> = ({
 
   const buttonClass = [
     styles.buttonFilled,
-    styles[`buttonFilled--${size}`],
-    disabled && styles["buttonFilled--disabled"],
+    styles[`buttonFilled_${size}`],
+    disabled && styles["buttonFilled_disabled"],
     className,
   ]
     .filter(Boolean)
@@ -74,7 +74,7 @@ export const ButtonFilled: React.FC<ButtonFilledProps> = ({
 
   return (
     <button
-      className={`${buttonClass} ${styles[`buttonFilled--${contentType}`]}`}
+      className={`${buttonClass} ${styles[`buttonFilled_${contentType}`]}`}
       onClick={handleClick}
       disabled={disabled}
       aria-label={ariaLabel || label}

@@ -1,50 +1,65 @@
-import React, { useEffect } from "react";
-import { observer } from "mobx-react-lite";
+import React, { useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
 import styles from "./Modal.module.scss";
 
 export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onSuccess?: () => void;
   children: React.ReactNode;
   className?: string;
 }
 
-export const Modal: React.FC<ModalProps> = observer(
-  ({ isOpen, onClose, children, className = "" }) => {
-    const handleOverlayClick = (event: React.MouseEvent): void => {
+export const Modal: React.FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  onSuccess,
+  children,
+  className = "",
+}) => {
+  const handleOverlayClick = useCallback(
+    (event: React.MouseEvent): void => {
       if (event.target === event.currentTarget) {
         onClose();
       }
-    };
+    },
+    [onClose],
+  );
 
-    const handleKeyDown = (event: KeyboardEvent): void => {
+  const handleSuccess = useCallback((): void => {
+    onSuccess?.();
+    onClose();
+  }, [onSuccess, onClose]);
+
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent): void => {
       if (event.key === "Escape") {
         onClose();
       }
+    },
+    [onClose],
+  );
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
     };
+  }, [isOpen, handleKeyDown]);
 
-    useEffect(() => {
-      if (isOpen) {
-        document.addEventListener("keydown", handleKeyDown);
-        document.body.style.overflow = "hidden";
-      }
+  if (!isOpen) return null;
 
-      return () => {
-        document.removeEventListener("keydown", handleKeyDown);
-        document.body.style.overflow = "unset";
-      };
-    }, [isOpen]);
+  const modalClass = [styles.modal, className].filter(Boolean).join(" ");
 
-    if (!isOpen) return null;
-
-    const modalClass = [styles.modal, className].filter(Boolean).join(" ");
-
-    return createPortal(
-      <div className={styles.modalOverlay} onClick={handleOverlayClick}>
-        <div className={modalClass}>{children}</div>
-      </div>,
-      document.body,
-    );
-  },
-);
+  return createPortal(
+    <div className={styles.modalOverlay} onClick={handleOverlayClick}>
+      <div className={modalClass}>{children}</div>
+    </div>,
+    document.body,
+  );
+};

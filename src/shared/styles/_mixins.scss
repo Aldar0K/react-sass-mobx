@@ -40,7 +40,7 @@
   font-weight: $font-weight-semibold;
   text-align: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 
@@ -149,7 +149,7 @@
 // Карточки
 @mixin card {
   background-color: $color-white;
-  border-radius: $border-radius-xl;
+  border-radius: $border-radius-md;
   box-shadow: $shadow-button;
   padding: $spacing-3xl;
 }
