@@ -4,7 +4,7 @@ export interface ICompanyDetailsData {
   agreementNumber: string;
   agreementDate: string;
   businessEntity: string;
-  companyType: string;
+  type: string[]; // Массив для множественного выбора (соответствует API)
 }
 
 export class CompanyDetailsStore {
@@ -28,9 +28,13 @@ export class CompanyDetailsStore {
     this.editedData = data;
   };
 
-  updateField = (field: keyof ICompanyDetailsData, value: string): void => {
+  updateField = (
+    field: keyof ICompanyDetailsData,
+    value: string | string[],
+  ): void => {
     if (!this.editedData) return;
-    this.editedData[field] = value;
+    (this.editedData as unknown as Record<string, string | string[]>)[field] =
+      value;
   };
 
   startEditing = (initialData: ICompanyDetailsData): void => {

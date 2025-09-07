@@ -1,6 +1,7 @@
 import { IOrganization } from "@/entities/organization";
 import { ButtonFlattened, EditIcon } from "@/shared/ui";
 import React from "react";
+import { mapCompanyTypesToLabels } from "../lib/mappers";
 import { CompanyDetailsField } from "./CompanyDetailsField";
 import styles from "./CompanyDetailsView.module.scss";
 
@@ -44,7 +45,10 @@ export const CompanyDetailsView: React.FC<CompanyDetailsViewProps> = ({
 
         <CompanyDetailsField label="Company type:">
           <span className={styles.companyDetailsView__value}>
-            {organization.companyType || "Funeral Home, Logistics services"}
+            {organization.type 
+              ? mapCompanyTypesToLabels(organization.type).join(", ")
+              : "Funeral Home, Logistics services"
+            }
           </span>
         </CompanyDetailsField>
       </div>

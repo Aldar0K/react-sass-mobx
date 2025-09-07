@@ -1,23 +1,23 @@
 import { observer } from "mobx-react-lite";
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowDownIcon } from "../Icons/Icons";
-import styles from "./Select.module.scss";
+import styles from "./Selector.module.scss";
 
-export interface SelectOption {
+export interface SelectorOption {
   value: string;
   label: string;
 }
 
-export interface SelectProps {
+export interface SelectorProps {
   value: string;
   onChange: (value: string) => void;
-  options: SelectOption[];
+  options: SelectorOption[];
   placeholder?: string;
   disabled?: boolean;
   className?: string;
 }
 
-export const Select: React.FC<SelectProps> = observer(
+export const Selector: React.FC<SelectorProps> = observer(
   ({
     value,
     onChange,
@@ -58,34 +58,34 @@ export const Select: React.FC<SelectProps> = observer(
       };
     }, []);
 
-    const selectClass = [
-      styles.select,
-      isOpen && styles["select--open"],
-      disabled && styles["select--disabled"],
+    const selectorClass = [
+      styles["selector"],
+      isOpen && styles["selector_open"],
+      disabled && styles["selector_disabled"],
       className,
     ]
       .filter(Boolean)
       .join(" ");
 
     return (
-      <div className={selectClass} ref={selectRef}>
-        <div className={styles.selectTrigger} onClick={handleToggle}>
-          <span className={styles.selectText}>
+      <div className={selectorClass} ref={selectRef}>
+        <div className={styles["selector__trigger"]} onClick={handleToggle}>
+          <span className={styles["selector__text"]}>
             {selectedOption ? selectedOption.label : placeholder}
           </span>
-          <span className={styles.selectIcon}>
-            <ArrowDownIcon size={16} />
+          <span className={styles["selector__icon"]}>
+            <ArrowDownIcon size={20} />
           </span>
         </div>
 
         {isOpen && (
-          <div className={styles.selectDropdown}>
+          <div className={styles["selector__dropdown"]}>
             {options.map((option) => (
               <div
                 key={option.value}
-                className={`${styles.selectOption} ${
+                className={`${styles["selector__option"]} ${
                   option.value === value
-                    ? styles["select__option--selected"]
+                    ? styles["selector__option_selected"]
                     : ""
                 }`}
                 onClick={() => handleOptionClick(option.value)}

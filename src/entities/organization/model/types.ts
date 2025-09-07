@@ -26,7 +26,7 @@ export interface IOrganization {
   // Дополнительные поля для Company Details
   agreementNumber?: string;
   agreementDate?: string;
-  companyType?: string;
+  companyType?: string[]; // Массив для множественного выбора
 }
 
 // Запросы на обновление
@@ -39,10 +39,6 @@ export interface IUpdateOrganizationRequest {
     issue_date?: string; // ISO date string
   };
   type?: string[];
-  // Дополнительные поля для Company Details
-  agreementNumber?: string;
-  agreementDate?: string;
-  companyType?: string;
 }
 
 // Ответ загрузки фото

@@ -1,16 +1,43 @@
 import { IOrganization } from "@/entities/organization";
-import { ButtonOutline, Input } from "@/shared/ui";
+import {
+  ButtonFlattened,
+  CheckIcon,
+  CloseIcon,
+  Input,
+  MultiSelector,
+  Selector,
+} from "@/shared/ui";
 import React from "react";
+import {
+  mapCompanyTypesToLabels,
+  mapLabelsToCompanyTypes,
+} from "../lib/mappers";
 import styles from "./CompanyDetailsEdit.module.scss";
 import { CompanyDetailsField } from "./CompanyDetailsField";
+
+// Business entity options
+const BUSINESS_ENTITY_OPTIONS = [
+  { value: "Sole Proprietorship", label: "Sole Proprietorship" },
+  { value: "Partnership", label: "Partnership" },
+  { value: "Limited Liability Company", label: "Limited Liability Company" },
+];
+
+// Company type options (читаемые названия)
+const COMPANY_TYPE_OPTIONS = [
+  { value: "Funeral Home", label: "Funeral Home" },
+  { value: "Logistics services", label: "Logistics services" },
+  { value: "Burial care Contractor", label: "Burial care Contractor" },
+];
 
 interface CompanyDetailsEditProps {
   organization: IOrganization;
   onSave: () => void;
   onCancel: () => void;
-  onFieldChange: (field: string, value: string) => void;
+  onFieldChange: (field: string, value: string | string[]) => void;
   isLoading?: boolean;
 }
+
+// TODO: make it proper form
 
 export const CompanyDetailsEdit: React.FC<CompanyDetailsEditProps> = ({
   organization,
@@ -24,38 +51,16 @@ export const CompanyDetailsEdit: React.FC<CompanyDetailsEditProps> = ({
       <div className={styles.companyDetailsEdit__header}>
         <h2 className={styles.companyDetailsEdit__title}>Company Details</h2>
         <div className={styles.companyDetailsEdit__actions}>
-          <ButtonOutline
+          <ButtonFlattened
             label="Save changes"
-            size="mini"
-            icon={() => (
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path
-                  d="M3 4.5L10.5 7L13.5 4.5"
-                  stroke="#3B3B3B"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            )}
+            icon={CheckIcon}
             onClick={onSave}
             disabled={isLoading}
             className={styles.companyDetailsEdit__saveButton}
           />
-          <ButtonOutline
+          <ButtonFlattened
             label="Cancel"
-            size="mini"
-            icon={() => (
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path
-                  d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5"
-                  stroke="#3B3B3B"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            )}
+            icon={CloseIcon}
             onClick={onCancel}
             disabled={isLoading}
             className={styles.companyDetailsEdit__cancelButton}
@@ -64,76 +69,52 @@ export const CompanyDetailsEdit: React.FC<CompanyDetailsEditProps> = ({
       </div>
 
       <div className={styles.companyDetailsEdit__list}>
-        <CompanyDetailsField label="Agreement number:">
-          <Input
-            value={organization.agreementNumber || "1624/2-24"}
-            onChange={(value) => onFieldChange("agreementNumber", value)}
-            disabled={isLoading}
-            className={styles.companyDetailsEdit__input}
-          />
-        </CompanyDetailsField>
-
-        <CompanyDetailsField label="Date:">
-          <Input
-            value={organization.agreementDate || "03.12.2024"}
-            onChange={(value) => onFieldChange("agreementDate", value)}
-            disabled={isLoading}
-            className={styles.companyDetailsEdit__input}
-          />
-        </CompanyDetailsField>
+        <div className={styles.companyDetailsEdit__agreementRow}>
+          <CompanyDetailsField label="Agreement number:">
+            <Input
+              value={organization.agreementNumber || "1624/2-24"}
+              onChange={(value) => onFieldChange("agreementNumber", value)}
+              disabled={isLoading}
+              className={styles.companyDetailsEdit__input}
+            />
+          </CompanyDetailsField>
+          <CompanyDetailsField
+            label="Date:"
+            labelClassName={styles.companyDetailsEdit__label}
+          >
+            <Input
+              value={organization.agreementDate || "03.12.2024"}
+              onChange={(value) => onFieldChange("agreementDate", value)}
+              disabled={isLoading}
+              className={styles.companyDetailsEdit__input}
+            />
+          </CompanyDetailsField>
+        </div>
 
         <CompanyDetailsField label="Business entity:">
-          <div className={styles.companyDetailsEdit__select}>
-            <Input
-              value={organization.businessEntity || "Partnership"}
-              onChange={(value) => onFieldChange("businessEntity", value)}
-              disabled={isLoading}
-              className={styles.companyDetailsEdit__selectInput}
-            />
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              className={styles.companyDetailsEdit__selectIcon}
-            >
-              <path
-                d="M5 7.5L10 12.5L15 7.5"
-                stroke="#000000"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
+          <Selector
+            value={organization.businessEntity || "Partnership"}
+            onChange={(value) => onFieldChange("businessEntity", value)}
+            options={BUSINESS_ENTITY_OPTIONS}
+            disabled={isLoading}
+            className={styles.companyDetailsEdit__selector}
+          />
         </CompanyDetailsField>
 
         <CompanyDetailsField label="Company type:">
-          <div className={styles.companyDetailsEdit__select}>
-            <Input
-              value={
-                organization.companyType || "Funeral Home, Logistics services"
-              }
-              onChange={(value) => onFieldChange("companyType", value)}
-              disabled={isLoading}
-              className={styles.companyDetailsEdit__selectInput}
-            />
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              className={styles.companyDetailsEdit__selectIcon}
-            >
-              <path
-                d="M5 7.5L10 12.5L15 7.5"
-                stroke="#000000"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
+          <MultiSelector
+            values={
+              organization.type
+                ? mapCompanyTypesToLabels(organization.type)
+                : ["Funeral Home", "Logistics services"]
+            }
+            onChange={(values) =>
+              onFieldChange("type", mapLabelsToCompanyTypes(values))
+            }
+            options={COMPANY_TYPE_OPTIONS}
+            disabled={isLoading}
+            className={styles.companyDetailsEdit__selector}
+          />
         </CompanyDetailsField>
       </div>
     </div>

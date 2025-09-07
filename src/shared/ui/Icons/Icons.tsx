@@ -102,16 +102,16 @@ export const CheckIcon: React.FC<IconProps> = ({
   className = "",
 }) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
-    viewBox="0 0 20 20"
+    viewBox="0 0 16 16"
     fill="none"
     className={className}
   >
     <path
-      d="M3.75 5.63L13.13 8.75"
+      d="M13.5 4.50031L6.5 11.5L3 8.00031"
       stroke={color}
-      strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
@@ -125,23 +125,22 @@ export const CloseIcon: React.FC<IconProps> = ({
   className = "",
 }) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
-    viewBox="0 0 20 20"
+    viewBox="0 0 16 16"
     fill="none"
     className={className}
   >
     <path
-      d="M3.5 3.5L16.5 16.5"
+      d="M12.5 3.5L3.5 12.5"
       stroke={color}
-      strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
-      d="M16.5 3.5L3.5 16.5"
+      d="M12.5 12.5L3.5 3.5"
       stroke={color}
-      strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />

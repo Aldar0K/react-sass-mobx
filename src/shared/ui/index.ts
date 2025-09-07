@@ -19,8 +19,14 @@ export type { ButtonSideMenuProps } from "./ButtonSideMenu/ButtonSideMenu";
 export { Input } from "./Input/Input";
 export type { InputProps } from "./Input/Input";
 
-export { Select } from "./Select/Select";
-export type { SelectOption, SelectProps } from "./Select/Select";
+export { Selector } from "./Selector/Selector";
+export type { SelectorOption, SelectorProps } from "./Selector/Selector";
+
+export { MultiSelector } from "./MultiSelector/MultiSelector";
+export type {
+  MultiSelectorOption,
+  MultiSelectorProps,
+} from "./MultiSelector/MultiSelector";
 
 export { Modal } from "./Modal/Modal";
 export type { ModalProps } from "./Modal/Modal";

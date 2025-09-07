@@ -25,8 +25,7 @@ export const CompanyDetails: React.FC<CompanyDetailsProps> = observer(
       agreementNumber: organization.agreementNumber || "1624/2-24",
       agreementDate: organization.agreementDate || "03.12.2024",
       businessEntity: organization.businessEntity || "Partnership",
-      companyType:
-        organization.companyType || "Funeral Home, Logistics services",
+      type: organization.type || ["funeral_home", "logistics_services"],
     });
 
     const handleEdit = (): void => {
@@ -37,7 +36,10 @@ export const CompanyDetails: React.FC<CompanyDetailsProps> = observer(
       store.cancelEditing();
     };
 
-    const handleFieldChange = (field: string, value: string): void => {
+    const handleFieldChange = (
+      field: string,
+      value: string | string[],
+    ): void => {
       store.updateField(field as keyof ICompanyDetailsData, value);
     };
 
@@ -46,16 +48,37 @@ export const CompanyDetails: React.FC<CompanyDetailsProps> = observer(
 
       store.setLoading(true);
       try {
+        const updateData = {
+          name: organization.name,
+          shortName: organization.shortName,
+          businessEntity: store.editedData.businessEntity || "",
+          contract: {
+            no: store.editedData.agreementNumber || organization.contract.no,
+            issue_date:
+              store.editedData.agreementDate ||
+              organization.contract.issue_date,
+          },
+          type: store.editedData.type,
+        };
+
         // Обновляем данные организации
-        await organizationStore.updateOrganization(organization.id, {
+        const updatedOrganization = await organizationStore.updateOrganization(
+          organization.id,
+          updateData,
+        );
+
+        // Обновляем поля agreementNumber и agreementDate из отправленных данных,
+        // так как API не возвращает эти поля в response
+        const finalOrganization = {
+          ...updatedOrganization,
           agreementNumber: store.editedData.agreementNumber,
           agreementDate: store.editedData.agreementDate,
-          businessEntity: store.editedData.businessEntity,
-          companyType: store.editedData.companyType,
-        });
+        };
+
+        // Обновляем данные в store с правильными полями agreement
+        organizationStore.setOrganization(finalOrganization);
 
         store.cancelEditing();
-        console.log("Company details updated successfully");
       } catch (error) {
         console.error("Failed to update company details:", error);
         // TODO: показать ошибку пользователю

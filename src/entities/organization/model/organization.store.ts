@@ -42,7 +42,7 @@ export class OrganizationStore {
   async updateOrganization(
     id: string,
     data: IUpdateOrganizationRequest,
-  ): Promise<void> {
+  ): Promise<IOrganization> {
     this.setLoading(true);
     this.setError(null);
 
@@ -54,6 +54,7 @@ export class OrganizationStore {
       runInAction(() => {
         this.organization = updatedOrganization;
       });
+      return updatedOrganization;
     } catch (error) {
       runInAction(() => {
         this.setError(
@@ -160,5 +161,9 @@ export class OrganizationStore {
 
   clearError(): void {
     this.error = null;
+  }
+
+  setOrganization(organization: IOrganization): void {
+    this.organization = organization;
   }
 }
