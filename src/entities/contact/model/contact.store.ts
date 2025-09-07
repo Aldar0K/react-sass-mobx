@@ -33,7 +33,10 @@ export class ContactStore {
     }
   }
 
-  async updateContact(id: string, data: IUpdateContactRequest): Promise<void> {
+  async updateContact(
+    id: string,
+    data: IUpdateContactRequest,
+  ): Promise<IContact> {
     this.setLoading(true);
     this.setError(null);
 
@@ -42,6 +45,7 @@ export class ContactStore {
       runInAction(() => {
         this.contact = updatedContact;
       });
+      return updatedContact;
     } catch (error) {
       runInAction(() => {
         this.setError(
@@ -66,5 +70,9 @@ export class ContactStore {
 
   clearError(): void {
     this.error = null;
+  }
+
+  setContact(contact: IContact): void {
+    this.contact = contact;
   }
 }

@@ -1,0 +1,50 @@
+@import "@/shared/styles/variables";
+@import "@/shared/styles/mixins";
+
+.companyContactsEdit {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.companyContactsEdit__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.companyContactsEdit__title {
+  color: var(--black-black-80, rgba(0, 0, 0, 0.8));
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0.3px;
+  margin: 0;
+  flex: 1;
+}
+
+.companyContactsEdit__actions {
+  display: flex;
+  gap: 12px;
+}
+
+.companyContactsEdit__saveButton,
+.companyContactsEdit__cancelButton {
+  // Стили наследуются от ButtonFlattened
+}
+
+.companyContactsEdit__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.companyContactsEdit__input {
+  width: 100%;
+}

@@ -1,4 +1,5 @@
 import { rootStore } from "@/app/model/root.store";
+import { CompanyContacts } from "@/widgets/company-contacts";
 import { CompanyDetails } from "@/widgets/company-details";
 import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
@@ -53,6 +54,12 @@ export const CompanyPage: React.FC = observer(() => {
             organization={organizationStore.organization}
             className={styles.companyPage__details}
           />
+          {contactStore.contact && (
+            <CompanyContacts
+              contact={contactStore.contact}
+              className={styles.companyPage__contacts}
+            />
+          )}
         </section>
       </main>
     </div>

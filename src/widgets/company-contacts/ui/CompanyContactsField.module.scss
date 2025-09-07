@@ -1,0 +1,31 @@
+@import "@/shared/styles/variables";
+@import "@/shared/styles/mixins";
+
+.companyContactsField {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.companyContactsField__label {
+  width: 160px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  color: var(--black-black-50, rgba(0, 0, 0, 0.5));
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  flex-shrink: 0;
+}
+
+.companyContactsField__content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+}

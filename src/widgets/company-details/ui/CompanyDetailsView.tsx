@@ -39,16 +39,13 @@ export const CompanyDetailsView: React.FC<CompanyDetailsViewProps> = ({
 
         <CompanyDetailsField label="Business entity:">
           <span className={styles.companyDetailsView__value}>
-            {organization.businessEntity || "Partnership"}
+            {organization.businessEntity}
           </span>
         </CompanyDetailsField>
 
         <CompanyDetailsField label="Company type:">
           <span className={styles.companyDetailsView__value}>
-            {organization.type 
-              ? mapCompanyTypesToLabels(organization.type).join(", ")
-              : "Funeral Home, Logistics services"
-            }
+            {mapCompanyTypesToLabels(organization.type).join(", ")}
           </span>
         </CompanyDetailsField>
       </div>
