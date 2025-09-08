@@ -5,29 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Redirecting...</title>
     <script>
-      // Простое перенаправление для SPA на GitHub Pages
-      // Сохраняем текущий путь и перенаправляем на index.html
+      // SPA redirect для GitHub Pages с base path
+      // Учитываем /react-sass-mobx/ в пути
       var pathSegmentsToKeep = 1; // Учитываем /react-sass-mobx/
       var l = window.location;
-      l.replace(
-        l.protocol +
-          "//" +
-          l.hostname +
-          (l.port ? ":" + l.port : "") +
-          l.pathname
-            .split("/")
-            .slice(0, 1 + pathSegmentsToKeep)
-            .join("/") +
-          "/?/" +
-          l.pathname
-            .slice(1)
-            .split("/")
-            .slice(pathSegmentsToKeep)
-            .join("/")
-            .replace(/&/g, "~and~") +
-          (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
-          l.hash,
-      );
+
+      // Проверяем, что мы находимся в правильном base path
+      if (l.pathname.startsWith("/react-sass-mobx/")) {
+        l.replace(
+          l.protocol +
+            "//" +
+            l.hostname +
+            (l.port ? ":" + l.port : "") +
+            l.pathname
+              .split("/")
+              .slice(0, 1 + pathSegmentsToKeep)
+              .join("/") +
+            "/?/" +
+            l.pathname
+              .slice(1)
+              .split("/")
+              .slice(pathSegmentsToKeep)
+              .join("/")
+              .replace(/&/g, "~and~") +
+            (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+            l.hash,
+        );
+      } else {
+        // Если мы не в base path, перенаправляем на главную
+        l.replace("/react-sass-mobx/");
+      }
     </script>
   </head>
   <body>

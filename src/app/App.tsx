@@ -6,7 +6,7 @@ import { AppRouter } from "./routes/AppRouter";
 
 const App: React.FC = observer(() => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/react-sass-mobx">
       <AppRouter />
     </BrowserRouter>
   );
