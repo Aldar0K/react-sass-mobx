@@ -16,32 +16,25 @@ interface MainMenuProps {
 
 export const MainMenu: React.FC<MainMenuProps> = observer(
   ({ className = "" }) => {
-    // const { navigationStore } = rootStore; // TODO: Будет использоваться для управления активными модулями
-
     const menuClass = [styles.mainMenu, className].filter(Boolean).join(" ");
 
     const handleModuleClick = (moduleId: string): void => {
-      // TODO: В будущем это будет переключать модули (Companies, Search, etc.)
       console.log(`Main menu module clicked: ${moduleId}`);
     };
 
     const handleActionClick = (action: string): void => {
-      // TODO: Обработка settings и signout
       console.log(`Main menu action: ${action}`);
     };
 
     return (
       <aside className={menuClass}>
-        {/* Modules Section */}
         <div className={styles.mainMenuModules}>
-          {/* Oak Tree Logo */}
           <OakTreeLogo
             size={36}
             color="#FFFFFF"
             className={styles.mainMenuLogo}
           />
 
-          {/* Icons List */}
           <div className={styles.mainMenuIconsList}>
             <ButtonSideMenu
               icon={CompanyIcon}
@@ -58,7 +51,6 @@ export const MainMenu: React.FC<MainMenuProps> = observer(
           </div>
         </div>
 
-        {/* Additional Section */}
         <div className={styles.mainMenuAdditional}>
           <div className={styles.mainMenuSeparator}></div>
 

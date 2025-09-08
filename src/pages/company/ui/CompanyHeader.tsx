@@ -42,17 +42,9 @@ export const CompanyHeader: React.FC<CompanyHeaderProps> = ({
       <div className={styles.companyHeader__actions}>
         <EditCompanyNameButton
           organization={organization}
-          onSuccess={() => {
-            console.log("Company name updated successfully");
-          }}
+          onSuccess={() => {}}
         />
-        <DeleteCompanyButton
-          organization={organization}
-          onSuccess={() => {
-            // TODO: добавить редирект на список компаний или показать уведомление
-            console.log("Company deleted successfully");
-          }}
-        />
+        <DeleteCompanyButton organization={organization} onSuccess={() => {}} />
       </div>
     </header>
   );

@@ -16,8 +16,6 @@ interface CompanyContactsEditProps {
   isLoading: boolean;
 }
 
-// TODO: make it proper form
-
 export const CompanyContactsEdit: React.FC<CompanyContactsEditProps> = ({
   contact,
   onSave,

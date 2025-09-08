@@ -26,7 +26,6 @@ export const CompanyPage: React.FC = observer(() => {
     };
 
     initializeData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!organizationStore.organization) {

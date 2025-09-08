@@ -37,8 +37,6 @@ interface CompanyDetailsEditProps {
   isLoading?: boolean;
 }
 
-// TODO: make it proper form
-
 export const CompanyDetailsEdit: React.FC<CompanyDetailsEditProps> = ({
   organization,
   onSave,

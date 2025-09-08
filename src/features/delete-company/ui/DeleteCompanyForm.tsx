@@ -18,11 +18,9 @@ export const DeleteCompanyForm: React.FC<DeleteCompanyFormProps> = observer(
     const handleDelete = async (): Promise<void> => {
       try {
         await organizationStore.deleteOrganization(organization.id);
-        console.log("Company deleted successfully");
         onSuccess?.();
       } catch (error) {
         console.error("Failed to delete organization:", error);
-        // TODO: показать ошибку пользователю
       }
     };
 

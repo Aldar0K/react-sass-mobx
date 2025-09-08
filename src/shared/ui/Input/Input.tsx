@@ -23,7 +23,6 @@ export const Input: React.FC<InputProps> = ({
   className = "",
 }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    console.log("Input handleChange:", event.target.value);
     onChange(event.target.value);
   };
 

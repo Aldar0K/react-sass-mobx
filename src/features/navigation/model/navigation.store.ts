@@ -22,7 +22,6 @@ export class NavigationStore {
 
   navigateTo(id: string): void {
     this.setActiveItem(id);
-    // TODO: В будущем здесь будет роутинг
     console.log(`Navigation to: ${id}`);
   }
 }

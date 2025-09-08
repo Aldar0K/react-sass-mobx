@@ -81,7 +81,6 @@ export const CompanyDetails: React.FC<CompanyDetailsProps> = observer(
         store.cancelEditing();
       } catch (error) {
         console.error("Failed to update company details:", error);
-        // TODO: показать ошибку пользователю
       } finally {
         store.setLoading(false);
       }

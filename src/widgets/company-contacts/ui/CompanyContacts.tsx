@@ -76,7 +76,6 @@ export const CompanyContacts: React.FC<CompanyContactsProps> = observer(
         store.cancelEditing();
       } catch (error) {
         console.error("Failed to update contact:", error);
-        // TODO: показать ошибку пользователю
       } finally {
         store.setLoading(false);
       }
