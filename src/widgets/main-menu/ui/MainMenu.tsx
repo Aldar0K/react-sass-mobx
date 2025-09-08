@@ -1,3 +1,4 @@
+import { ICON_COLORS, ICON_SIZES } from "@/shared/constants/app";
 import {
   ButtonSideMenu,
   CompanyIcon,
@@ -30,8 +31,8 @@ export const MainMenu: React.FC<MainMenuProps> = observer(
       <aside className={menuClass}>
         <div className={styles.mainMenuModules}>
           <OakTreeLogo
-            size={36}
-            color="#FFFFFF"
+            size={ICON_SIZES.XLARGE}
+            color={ICON_COLORS.PURE_WHITE}
             className={styles.mainMenuLogo}
           />
 

@@ -1,5 +1,6 @@
 import { rootStore } from "@/app/model/root.store";
 import { IOrganization } from "@/entities/organization";
+import { DEFAULT_ORGANIZATION_DATA } from "@/entities/organization/constants/defaults";
 import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
 import {
@@ -22,10 +23,15 @@ export const CompanyDetails: React.FC<CompanyDetailsProps> = observer(
 
     // Инициализируем данные для редактирования
     const getInitialData = (): ICompanyDetailsData => ({
-      agreementNumber: organization.agreementNumber || "1624/2-24",
-      agreementDate: organization.agreementDate || "03.12.2024",
-      businessEntity: organization.businessEntity || "Partnership",
-      type: organization.type || ["funeral_home", "logistics_services"],
+      agreementNumber:
+        organization.agreementNumber ||
+        DEFAULT_ORGANIZATION_DATA.AGREEMENT_NUMBER,
+      agreementDate:
+        organization.agreementDate || DEFAULT_ORGANIZATION_DATA.AGREEMENT_DATE,
+      businessEntity:
+        organization.businessEntity ||
+        DEFAULT_ORGANIZATION_DATA.BUSINESS_ENTITY,
+      type: organization.type || DEFAULT_ORGANIZATION_DATA.COMPANY_TYPES,
     });
 
     const handleEdit = (): void => {

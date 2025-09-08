@@ -75,6 +75,28 @@ $border-radius-2xl: 24px;
 // Тени из дизайна
 $shadow-button: 0px 3px 8px 0px rgba(0, 0, 0, 0.12);
 $shadow-sidebar: 4px 0px 16px 0px rgba(0, 0, 0, 0.08);
+
+// Размеры иконок
+$icon-size-small: 16px;
+$icon-size-medium: 24px;
+$icon-size-large: 32px;
+$icon-size-xlarge: 36px;
+
+// Цвета иконок
+$icon-color-white: rgba(255, 255, 255, 0.95);
+$icon-color-white-disabled: rgba(255, 255, 255, 0.5);
+$icon-color-primary: #3b3b3b;
+$icon-color-secondary: #6243e6;
+
+// Размеры кнопок
+$button-height-normal: 40px;
+$button-height-mini: 28px;
+
+// Padding для кнопок
+$button-padding-normal-text-only: 10px 12px;
+$button-padding-normal-icon-text: 10px 40px 10px 12px;
+$button-padding-normal-icon-only: 10px 12px;
+$button-padding-mini-all: 6px;
 $shadow-dropdown:
   0px 2px 4px 0px rgba(0, 0, 0, 0.16),
   0px -1px 4px 0px rgba(0, 0, 0, 0.04);

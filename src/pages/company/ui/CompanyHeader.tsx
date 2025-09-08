@@ -1,6 +1,7 @@
 import { IOrganization } from "@/entities/organization";
 import { DeleteCompanyButton } from "@/features/delete-company";
 import { EditCompanyNameButton } from "@/features/edit-company-name";
+import { DEFAULT_TEXTS, ICON_SIZES } from "@/shared/constants/app";
 import { ArrowLeftIcon, ButtonIcon } from "@/shared/ui";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +26,7 @@ export const CompanyHeader: React.FC<CompanyHeaderProps> = ({
     <header className={headerClass}>
       <ButtonIcon
         icon={ArrowLeftIcon}
-        size={32}
+        size={ICON_SIZES.LARGE}
         onClick={handleBack}
         aria-label="Back to companies list"
         className={styles.companyHeader__backButton}
@@ -34,7 +35,7 @@ export const CompanyHeader: React.FC<CompanyHeaderProps> = ({
       <div className={styles.companyHeader__left}>
         <div className={styles.companyHeader__title}>
           <h1 className={styles.companyHeader__company}>
-            {organization?.name || "Company Name"}
+            {organization?.name || DEFAULT_TEXTS.COMPANY_NAME}
           </h1>
         </div>
       </div>

@@ -43,38 +43,38 @@
 
   // Размеры кнопки
   &_normal {
-    height: 40px;
+    height: $button-height-normal;
     font-size: 13px;
-    line-height: 1.5384615384615385em; // style_DPCKEP из Figma
+    line-height: 1.5384615384615385em;
     letter-spacing: 3.6923076097781844%;
 
     // Padding зависит от типа содержимого
     &.buttonFilled_text-only {
-      padding: 10px 12px; // layout_II01IJ из Figma
+      padding: $button-padding-normal-text-only;
     }
 
     &.buttonFilled_icon-text {
-      padding: 10px 40px 10px 12px; // layout_JPSHN1 из Figma
+      padding: $button-padding-normal-icon-text;
     }
 
     &.buttonFilled_icon-only {
-      padding: 10px 12px;
+      padding: $button-padding-normal-icon-only;
       width: auto;
-      min-width: 40px;
+      min-width: $button-height-normal;
     }
   }
 
   &_mini {
-    height: 28px;
+    height: $button-height-mini;
     font-size: 11px;
-    line-height: 1.8181818181818181em; // style_A0EVSJ из Figma
+    line-height: 1.8181818181818181em;
     letter-spacing: 4.36363626610149%;
 
     // Padding для mini размера
     &.buttonFilled_text-only,
     &.buttonFilled_icon-text,
     &.buttonFilled_icon-only {
-      padding: 6px;
+      padding: $button-padding-mini-all;
     }
   }
 

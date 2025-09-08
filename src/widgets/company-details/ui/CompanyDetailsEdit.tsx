@@ -1,4 +1,5 @@
 import { IOrganization } from "@/entities/organization";
+import { DEFAULT_ORGANIZATION_DATA } from "@/entities/organization/constants/defaults";
 import {
   ButtonFlattened,
   CheckIcon,
@@ -70,7 +71,10 @@ export const CompanyDetailsEdit: React.FC<CompanyDetailsEditProps> = ({
         <div className={styles.companyDetailsEdit__agreementRow}>
           <CompanyDetailsField label="Agreement number:">
             <Input
-              value={organization.agreementNumber || "1624/2-24"}
+              value={
+                organization.agreementNumber ||
+                DEFAULT_ORGANIZATION_DATA.AGREEMENT_NUMBER
+              }
               onChange={(value) => onFieldChange("agreementNumber", value)}
               disabled={isLoading}
               className={styles.companyDetailsEdit__input}
@@ -81,7 +85,10 @@ export const CompanyDetailsEdit: React.FC<CompanyDetailsEditProps> = ({
             labelClassName={styles.companyDetailsEdit__label}
           >
             <Input
-              value={organization.agreementDate || "03.12.2024"}
+              value={
+                organization.agreementDate ||
+                DEFAULT_ORGANIZATION_DATA.AGREEMENT_DATE
+              }
               onChange={(value) => onFieldChange("agreementDate", value)}
               disabled={isLoading}
               className={styles.companyDetailsEdit__input}
@@ -91,7 +98,10 @@ export const CompanyDetailsEdit: React.FC<CompanyDetailsEditProps> = ({
 
         <CompanyDetailsField label="Business entity:">
           <Selector
-            value={organization.businessEntity || "Partnership"}
+            value={
+              organization.businessEntity ||
+              DEFAULT_ORGANIZATION_DATA.BUSINESS_ENTITY
+            }
             onChange={(value) => onFieldChange("businessEntity", value)}
             options={BUSINESS_ENTITY_OPTIONS}
             disabled={isLoading}
@@ -104,7 +114,7 @@ export const CompanyDetailsEdit: React.FC<CompanyDetailsEditProps> = ({
             values={
               organization.type
                 ? mapCompanyTypesToLabels(organization.type)
-                : ["Funeral Home", "Logistics services"]
+                : DEFAULT_ORGANIZATION_DATA.COMPANY_TYPE_LABELS
             }
             onChange={(values) =>
               onFieldChange("type", mapLabelsToCompanyTypes(values))

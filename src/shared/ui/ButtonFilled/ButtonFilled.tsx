@@ -1,4 +1,5 @@
 import React from "react";
+import { ICON_COLORS, ICON_SIZES } from "../../constants/app";
 import styles from "./ButtonFilled.module.scss";
 
 export interface ButtonFilledProps {
@@ -60,12 +61,12 @@ export const ButtonFilled: React.FC<ButtonFilledProps> = ({
   };
 
   const getIconColor = (): string => {
-    if (disabled) return "rgba(255, 255, 255, 0.5)";
-    return "rgba(255, 255, 255, 0.95)"; // Из Figma: fill_0ZJGIL
+    if (disabled) return ICON_COLORS.WHITE_DISABLED;
+    return ICON_COLORS.WHITE;
   };
 
   const getIconSize = (): number => {
-    return 16; // Стандартный размер иконки из Figma
+    return ICON_SIZES.SMALL;
   };
 
   // Определяем тип содержимого для правильного padding

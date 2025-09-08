@@ -1,4 +1,9 @@
 import { rootStore } from "@/app/model/root.store";
+import {
+  DEFAULT_ORGANIZATION_ID,
+  DEFAULT_TEXTS,
+  TEST_USER,
+} from "@/shared/constants/app";
 import { CompanyContacts } from "@/widgets/company-contacts";
 import { CompanyDetails } from "@/widgets/company-details";
 import { CompanyPhotos } from "@/widgets/company-photos";
@@ -13,8 +18,8 @@ export const CompanyPage: React.FC = observer(() => {
   useEffect(() => {
     const initializeData = async (): Promise<void> => {
       try {
-        await rootStore.authenticate("testuser");
-        await organizationStore.loadOrganization("12");
+        await rootStore.authenticate(TEST_USER);
+        await organizationStore.loadOrganization(DEFAULT_ORGANIZATION_ID);
         if (organizationStore.organization?.contactId) {
           await contactStore.loadContact(
             organizationStore.organization.contactId,
@@ -34,8 +39,8 @@ export const CompanyPage: React.FC = observer(() => {
         <main className={styles.companyPage__content}>
           <div className={styles.companyPage__loading}>
             {organizationStore.isLoading
-              ? "Loading..."
-              : "No organization found"}
+              ? DEFAULT_TEXTS.LOADING
+              : DEFAULT_TEXTS.NO_ORGANIZATION}
           </div>
         </main>
       </div>
