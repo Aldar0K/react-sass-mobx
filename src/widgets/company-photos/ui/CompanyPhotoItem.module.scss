@@ -1,0 +1,23 @@
+@import "@/shared/styles/variables";
+@import "@/shared/styles/mixins";
+
+.companyPhotoItem {
+  position: relative;
+  width: 144px;
+  height: 108px;
+  border-radius: 10px;
+  overflow: hidden;
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  &__removeButton {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+}

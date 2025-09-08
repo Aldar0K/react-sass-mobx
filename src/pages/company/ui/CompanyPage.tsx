@@ -1,6 +1,7 @@
 import { rootStore } from "@/app/model/root.store";
 import { CompanyContacts } from "@/widgets/company-contacts";
 import { CompanyDetails } from "@/widgets/company-details";
+import { CompanyPhotos } from "@/widgets/company-photos";
 import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
 import { CompanyHeader } from "./CompanyHeader";
@@ -60,6 +61,11 @@ export const CompanyPage: React.FC = observer(() => {
               className={styles.companyPage__contacts}
             />
           )}
+          <CompanyPhotos
+            organizationId={organizationStore.organization.id}
+            photos={organizationStore.organization.photos}
+            className={styles.companyPage__photos}
+          />
         </section>
       </main>
     </div>

@@ -1,0 +1,43 @@
+@import "@/shared/styles/variables";
+@import "@/shared/styles/mixins";
+
+.companyPhotos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+
+  padding: 24px;
+  width: 100%;
+  max-width: 640px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.12);
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  &__title {
+    color: var(--black-black-80, rgba(0, 0, 0, 0.8));
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.3px;
+    margin: 0;
+    flex: 1;
+  }
+
+  &__photos {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+}
