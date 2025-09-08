@@ -28,6 +28,11 @@
 2. Создайте новый environment с именем `github-pages`
 3. Настройте environment по необходимости
 
+**Примечание**: Если вы видите ошибку "Branch main is not allowed to deploy to github-pages due to environment protection rules", то:
+
+- Либо настройте environment `github-pages` с разрешением для ветки `main`
+- Либо используйте упрощенный workflow без environment (уже настроен)
+
 ### 3. Настройка base path (если нужно)
 
 Если ваш репозиторий называется не `react-sass-mobx`, обновите `base` в `vite.config.ts`:
