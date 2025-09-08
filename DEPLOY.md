@@ -15,6 +15,19 @@
 3. В разделе **Source** выберите **GitHub Actions**
 4. Сохраните настройки
 
+### 3. Настройка прав доступа
+
+1. В **Settings** найдите раздел **Actions** > **General**
+2. В разделе **Workflow permissions** выберите **Read and write permissions**
+3. Включите **Allow GitHub Actions to create and approve pull requests**
+4. Сохраните изменения
+
+### 4. Создание Environment (если нужно)
+
+1. В **Settings** найдите раздел **Environments**
+2. Создайте новый environment с именем `github-pages`
+3. Настройте environment по необходимости
+
 ### 3. Настройка base path (если нужно)
 
 Если ваш репозиторий называется не `react-sass-mobx`, обновите `base` в `vite.config.ts`:
@@ -91,6 +104,15 @@ dist/                        # Собранные файлы (создается
 
 **Причина**: Неправильный base path
 **Решение**: Проверьте `base` в `vite.config.ts`
+
+### 2. Приложение не работает после обновления страницы (F5)
+
+**Причина**: GitHub Pages не настроен для SPA (Single Page Application)
+**Решение**:
+
+- Файл `public/404.html` автоматически перенаправляет на `index.html`
+- Файл `index.html` содержит скрипт для обработки маршрутов
+- Это стандартное решение для SPA на GitHub Pages
 
 ### 2. Стили не загружаются
 
