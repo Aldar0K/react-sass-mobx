@@ -6,7 +6,7 @@ import {
   BUSINESS_ENTITY_OPTIONS,
   COMPANY_TYPE_OPTIONS,
 } from "@/entities/organization";
-import { Button, CheckIcon, CloseIcon, Input, Select } from "@/shared/ui";
+import { Button, CheckIcon, CloseIcon, Input, Selector } from "@/shared/ui";
 import { observer } from "mobx-react-lite";
 import React, { useState } from "react";
 
@@ -103,9 +103,11 @@ export const EditOrganizationForm: React.FC<EditOrganizationFormProps> =
             <span className="edit-organization-form__label">
               Business entity:
             </span>
-            <Select
+            <Selector
               value={formData.businessEntity}
-              onChange={(value) => handleInputChange("businessEntity", value)}
+              onChange={(value: string) =>
+                handleInputChange("businessEntity", value)
+              }
               options={BUSINESS_ENTITY_OPTIONS}
               disabled={isLoading}
             />
